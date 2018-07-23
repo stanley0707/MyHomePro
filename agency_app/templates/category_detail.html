@@ -1,0 +1,14 @@
+{% extends 'objects.html' %}
+
+{% block content_сategiries %}
+<div class='container'>
+<h2>{{ category.name }}</h2>
+<hr>
+
+{% for article in object_from_category  %}
+<li class=" mix color-1 check1 radio2 option3 ">
+ {% include "object_card.html" %}
+</li>
+{% endfor %}
+</div>
+{% endblock content_сategiries %} 

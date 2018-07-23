@@ -1,0 +1,14 @@
+{% extends 'objects.html' %}
+{% block contento %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>объектов найдено: {{ found_obj.count }} </h3>
+            {% for object in found_obj %}
+              <h4><a href="{{ get_absolute_url }}">{{ object.title }}</a></h4>
+              <p>{{ object.desc|truncatewords:30 }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock contento %}

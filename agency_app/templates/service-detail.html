@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="container">
+        <div class="text-container">{{pages_article.name }}</div>
+        <hr>
+        <img class="text-center" style="height: 225px; width: 100%; display: block;" src=" {{ pages_article.service_icon.url }} " data-holder-rendered="true">
+        <div class="card-body">
+              <p class="card-text">{{ pages_article.service_title }}</p>
+              <p class="card-text">{{ pages_article.service_text|safe }}</p> 
+         </div>
+</div>
+
+{% endblock content %}
