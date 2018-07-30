@@ -90,6 +90,7 @@ class Property(models.Model):
     date     = models.DateTimeField(blank=True, null=True, verbose_name=u'дата публикации')
     status   = models.BooleanField(verbose_name=u'статус')
     
+    area     = models.PositiveIntegerField(default=0, verbose_name=u'метраж')
     price    = models.PositiveIntegerField(default=0, verbose_name=u'стоимость')
     like     = models.PositiveIntegerField(default=0)
     dislike  = models.PositiveIntegerField(default=0)

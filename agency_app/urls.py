@@ -7,12 +7,14 @@ from agency_app.views import (
         PagesDetailView,
         DynamicPageImage,
         ObjectListView,
-        Searcher
+        Searcher,
     )
 
 urlpatterns = [
     # full category view of models
     url(r'^$', CategoryListView.as_view(), name='base_show'),
+
+    url(r'^contact/', include('contact_form.urls', namespace='contact_form')),
 
     # detail view category lict from category-space
     url(r'^category/(?P<slug>[-\w]+)/$', CategoryDetailView.as_view(), name='category-detail'),
@@ -35,5 +37,7 @@ urlpatterns = [
     url(r'^page_image/$', DynamicPageImage.as_view(), name='page_image'),
 
     # search url
-    url(r'^search_result/$', Searcher.as_view(), name="saerch_view")
+    url(r'^search_result/$', Searcher.as_view(), name="saerch_view"),
+
+
 ]

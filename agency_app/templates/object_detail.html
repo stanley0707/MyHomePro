@@ -1,17 +1,304 @@
 {% extends 'index.html' %}
-
+{% load static %}
 {% block content %}
-<div class="container">
-        <div class="text-container">{{article.title }}</div>
-        <hr>
-        <img class="text-center" style="height: 225px; width: 100%; display: block;" src=" {{  article.image.url  }} " data-holder-rendered="true">
-        <div class="card-body">
-            {% for image in imges %}
-                <img class="text-center" style="height: 225px; width: 300px;" src="{{ image.images.url }}" data-holder-rendered="true">
-            {% endfor %}
-              <p class="card-text">{{ article.title }}</p>
-              <p class="card-text">{{ article.content|safe }}</p> 
-         </div>
-         <div id="map"></div>
+<style type="text/css">
+  .cd-main-content .mypage-alo-phone {
+    float: right;
+    position: fixed;
+    left: 85%;
+    bottom: 10px;
+    visibility: visible;
+    background-color: transparent;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+    z-index: 200000 !important;
+  
+}
+.cd-main-content .mypage-alo-ph-img-circle {
+        width: 30px;
+        height: 30px;
+        top: 43px;
+        left: 43px;
+        position: absolute;
+        background: rgba(25, 255, 60, 0.1) url(http://lamdohoa.com/dienthoai.png) no-repeat center center;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        border: 1px solid transparent;
+        opacity: .9;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        -webkit-transform-origin: 50% 50%;
+        -moz-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+        -o-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        background-color: #13BF2D;
+        background-size: 70%;
+  -webkit-box-shadow: 1px 1px 38px -7px rgba(31,92,58,1);
+-moz-box-shadow: 1px 1px 38px -7px rgba(31,92,58,1);
+box-shadow: 1px 1px 38px -7px rgba(31,92,58,1);
+}
+.cd-main-content .mypage-alo-ph-circle-fill {
+    width: 60px;
+    height: 60px;
+    top: 28px;
+    left: 28px;
+    position: absolute;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    border: 1px solid transparent;
+    -webkit-transition: all .7s;
+    -moz-transition: all .7s;
+    -o-transition: all .7s;
+    transition: all .7s;
+    background-color: rgba(45, 237, 43, 0.5);
+    opacity: .75 !important;
+  -webkit-box-shadow: 1px 1px 38px -7px rgba(31,92,58,1);
+-moz-box-shadow: 1px 1px 38px -7px rgba(31,92,58,1);
+box-shadow: 1px 1px 38px -7px rgba(31,92,58,1);
+  
+}
+.cd-main-content .mypage-alo-ph-circle{
+    width: 90px;
+    height: 90px;
+    top: 12px;
+    left: 12px;
+    position: absolute;
+    background-color: transparent;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    border: 2px solid rgba(30, 30, 30, 0.4);
+    opacity: .1;
+    border-color: #0CED53;
+    opacity: .5;
+  -webkit-box-shadow: inset 1px 1px 38px -7px rgba(0,252,76,1);
+-moz-box-shadow: inset 1px 1px 38px -7px rgba(0,252,76,1);
+box-shadow: inset 1px 1px 38px -7px rgba(0,252,76,1);
+}
+</style>
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{  article.image.url  }}');">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="title">{{ article.title }}</h1>
+          <h1 style="font-size: 1.5em" class="price"><img src="{% static 'images/ruble.svg' %}">{{ article.price }}</h1>
+          <h1 style="font-size: 1.5em" class="price"><i style=" color: #2DED5D" class="material-icons">zoom_out_map</i> {{ article.area }} м<sup>2</sup></h1>
+        </div>
+      </div>
+    </div>
 </div>
-{% endblock content %} 
+
+
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <div style="width: 100%">
+            <div class="profile">
+              <div class="avatar">
+                <img src="{{ article.agent.avatar.url }}" alt="Circle Image" class="img-raised rounded-circle">
+              </div>
+              <div class="name">
+                <h6 style="padding-left: 80px">агент</h6>
+                <h3 style="font-size: 1em; padding-left: 80px"class="title">{{ article.agent.first_name }}</h3>
+                <a class="float-right"
+                     href="https://vk.com/share.php?u=http://127.0.0.1:8000{{ article.get_absolute_url }}"
+                     title="Share on Facebook">
+                     поделиться записью
+                    <button class="btn btn-just-icon btn-round btn-vk">
+                      <i class="fa fa-vk"></i>
+                    </button>
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="description text-center">
+          <p>{{ article.desc }}</p>
+        </div>
+        <div class="row">
+          <div class="col-md-6 ml-auto mr-auto">
+            <div class="profile-tabs">
+              <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
+                    <i class="material-icons">camera</i> фото
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#info" role="tab" data-toggle="tab">
+                    <i class="material-icons">more</i> описание
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                    <i class="material-icons">drafts</i> написать агенту
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content tab-space">
+          <div class="tab-pane active text-center gallery" id="studio">
+                <!--         carousel  -->
+        <!-- Carousel Card -->
+            <div class="card card-raised card-carousel">
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img class="d-block w-100" src="{{  article.image.url  }}">
+                          <div class="carousel-caption d-none d-md-block"></div>
+                        </div>
+                        
+                        {% for image in imges %}
+                        <div class="carousel-item">
+                          <img class="d-block w-100" src="{{ image.images.url }}">
+                          <div class="carousel-caption d-none d-md-block"></div>
+                        </div>
+                        {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <i class="material-icons">keyboard_arrow_left</i>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <i class="material-icons">keyboard_arrow_right</i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <!-- End Carousel Card -->
+          
+          </div>
+          <div class="tab-pane text-center gallery" id="info">
+            <div class="row">
+                              <div class="col-md-5 ml-auto">
+                  <div class="info info-horizontal">
+                    <div class="icon icon-rose">
+                      <i class="material-icons">timeline</i>
+                    </div>
+                    <div class="description">
+                      <h4 class="info-title">Marketing</h4>
+                      <p class="description">
+                        We've created the marketing campaign of the website. It was a very interesting collaboration.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="info info-horizontal">
+                    <div class="icon icon-primary">
+                      <i class="material-icons">code</i>
+                    </div>
+                    <div class="description">
+                      <h4 class="info-title">Fully Coded in HTML5</h4>
+                      <p class="description">
+                        We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="info info-horizontal">
+                    <div class="icon icon-info">
+                      <i class="material-icons">group</i>
+                    </div>
+                    <div class="description">
+                      <h4 class="info-title">Built Audience</h4>
+                      <p class="description">
+                        There is also a Fully Customizable CMS Admin Dashboard for this product.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="tab-pane text-center gallery" id="favorite">
+                  <div class="section section-contacts">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="text-center title">Work with us</h2>
+            <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
+            <form class="contact-form">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">фио</label>
+                    <input type="email" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">id oбъкта</label>
+                    <input type="email" value="{{ article.id_prop }}" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">email</label>
+                    <input type="email" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleMessage" class="bmd-label-floating">Your Message</label>
+                <textarea type="email" class="form-control" rows="4" id="exampleMessage"></textarea>
+              </div>
+              <div class="row">
+                <div class="col-md-4 ml-auto mr-auto text-center">
+                  <button class="btn btn-primary btn-raised">
+                    Send Message
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="tel:{{ article.agent.number }}" mypage="" class="call-now" rel="nofollow">
+    <div class="mypage-alo-phone">
+      <div class="animated infinite zoomIn mypage-alo-ph-circle"></div>
+        <div class="animated infinite pulse mypage-alo-ph-circle-fill"></div>
+        <div class="animated infinite tada mypage-alo-ph-img-circle"></div>
+      </div>
+    </a>
+  <script type="text/javascript">
+    (function(){
+  
+  var shareButtons = document.querySelectorAll(".share-btn");
+
+  if (shareButtons) {
+      [].forEach.call(shareButtons, function(button) {
+      button.addEventListener("click", function(event) {
+        var width = 650,
+            height = 450;
+
+        event.preventDefault();
+
+        window.open(this.href, 'Share Dialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width='+width+',height='+height+',top='+(screen.height/2-height/2)+',left='+(screen.width/2-width/2));
+      });
+    });
+  }
+
+})();
+  </script>
+{% endblock content %}

@@ -1082,7 +1082,7 @@ position: relative;
 .card_agent_avatar{
   float: left !important;
   margin-bottom: 5px!important;
-  right: 15px
+  width: 100%
 }
 
 
@@ -1522,3 +1522,4 @@ xcustom form elements
 .cd-filter-content{
   -webkit-padding-start: 0px;
 }
+

@@ -28,7 +28,20 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'shilowstanislaw@gmail.com'
+EMAIL_HOST_PASSWORD = '1234567890QPqwertyuiop'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+ADMINS = (
+    ('Администратор', 'shilowstanislaw@gmail.com'),
+)
+
+MANAGERS = ADMINS
 
 INSTALLED_APPS = [
     'suit',
@@ -39,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'agency_app',
+    'contact_form',
 ]
 
 MIDDLEWARE = [

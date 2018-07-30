@@ -1,3 +1,20 @@
+/*!
+
+ =========================================================
+ * Material Kit - v2.0.3
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/material-kit
+ * Copyright 2018 Creative Tim (http://www.creative-tim.com)
+
+ * Designed by www.invisionapp.com Coded by www.creative-tim.com
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+
 .card {
   font-size: .875rem;
 }
@@ -251,7 +268,6 @@ button,
 html [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button;
 }
 
 button::-moz-focus-inner,
@@ -655,7 +671,6 @@ button,
 html [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button;
 }
 
 button::-moz-focus-inner,
@@ -1000,10 +1015,10 @@ pre code {
 }
 
 .row {
+  padding-top:40px; 
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+
 }
 
 .no-gutters {
@@ -3326,7 +3341,6 @@ fieldset:disabled a.btn {
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
-  width: 100%;
 }
 
 .fade {
@@ -17504,3 +17518,6 @@ footer .pull-center {
     display: none !important;
   }
 }
+
+/*# sourceMappingURL=kit-free.css.map */
+

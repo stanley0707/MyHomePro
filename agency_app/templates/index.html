@@ -13,6 +13,7 @@
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="{% static 'css/main.css' %}" rel="stylesheet" />
@@ -29,7 +30,7 @@
     <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href=""> <img style="height: 90px;" src="{% static 'images/my_hous_colo.png' %}">
+        <a class="navbar-brand" href=""> <img style="height: 70px; top:25px " src="{% static 'images/logoMH.png' %}">
          </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -58,6 +59,7 @@
       </div>
     </div>
   </nav>
+  {% block contact_form_block %}
   <div class="page-header header-filter" data-parallax="true" style="background-image: url('{% static 'images/profile_city.jpg' %}');">
     <div class="container">
       <div class="row">
@@ -150,38 +152,35 @@
           <div class="col-md-8 ml-auto mr-auto">
             <h2 class="text-center title">Work with us</h2>
             <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
-            <form class="contact-form">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Your Name</label>
-                    <input type="email" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Your Email</label>
-                    <input type="email" class="form-control">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="exampleMessage" class="bmd-label-floating">Your Message</label>
-                <textarea type="email" class="form-control" rows="4" id="exampleMessage"></textarea>
-              </div>
-              <div class="row">
-                <div class="col-md-4 ml-auto mr-auto text-center">
-                  <button class="btn btn-primary btn-raised">
-                    Send Message
-                  </button>
-                </div>
-              </div>
-            </form>
+  <form action="/contact/" method="Post">{% csrf_token %}
+    {{ form.non_field_errors }}
+    <div>
+      <label for="id_subject">Тема:</label>
+      {{ form.subject.errors }}
+      {{ form.subject }}
+    </div>
+    <div>
+      <label for="id_sender">E-mail:</label>
+      {{ form.sender.errors }}
+      {{ form.sender }}
+    </div>
+    <div>
+      <label for="id_message">Сообщение:</label>
+      {{ form.message.errors }}
+      {{ form.message }}
+    </div>
+    <div>
+      {{ form.copy.errors }}
+      <label for="id_copy">Отправить копию себе {{ form.copy }}</label>
+    </div>
+    <input type="submit" value="Отправить"/>
+</form>
           </div>
         </div>
       </div>
     </div>
   </div>
+  {% endblock contact_form_block %}
   {% include "footer.html" %}
   {% endblock content %}
  </main>

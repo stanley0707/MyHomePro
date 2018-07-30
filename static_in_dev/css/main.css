@@ -6362,6 +6362,8 @@ button.bg-dark:focus {
 .rounded-circle {
   border-radius: 50% !important;
   float: left;
+  height: 60px;
+  width: 60px;
 }
 
 .rounded-0 {
@@ -7557,7 +7559,7 @@ button.bg-dark:focus {
 
 .mr-auto,
 .mx-auto {
-  margin-right: auto !important;
+  margin-right: 0 auto!important;
 }
 
 .mb-auto,
@@ -7567,7 +7569,7 @@ button.bg-dark:focus {
 
 .ml-auto,
 .mx-auto {
-  margin-left: auto !important;
+  margin-left: 0 auto!important;
 }
 
 @media (min-width: 576px) {
@@ -17150,6 +17152,7 @@ footer .pull-center {
 
 .profile-page .profile {
   text-align: center;
+  width: 100% !important
 }
 
 .profile-page .profile img {
