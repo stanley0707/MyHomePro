@@ -8,8 +8,8 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.views import View
 from agency import settings
-
-
+from django.urls import reverse
+from django.views.generic import TemplateView, CreateView, FormView
 	
 class ObjectListView(ListView):
 	model = Property
@@ -55,7 +55,21 @@ class CategoryDetailView(DetailView, CategoryListMixin):
 		return context
 
 
-class ObjectDetailView(DetailView, CategoryListMixin):
+class CompletedPage(TemplateView):
+	template_name = "object_send_complete.html"
+
+
+class ContactFormMixin(object):
+	
+	def form_valid(self, form):
+		form.send_email(self.request)
+		return super(ContactFormMixin, self).form_valid(form)
+
+	def get_success_url(self):
+		return reverse('completed')
+
+
+class ObjectDetailView(ContactFormMixin, FormView, DetailView):
 	model = Property
 	template_name = 'object_detail.html'
 
@@ -66,12 +80,15 @@ class ObjectDetailView(DetailView, CategoryListMixin):
 		art_id = self.get_object().pk
 		img = Images.objects.all()
 		context['imges'] = img.filter(album_id=art_id)
-		return context 
+		return context
+
+
+class ContactModelFormView(ContactFormMixin, CreateView):
+	pass
 
 
 
 class DynamicCategoryImage(View):
-	
 	def get(self, request, *args, **kwargs):
 		category_id = request.GET.get('category_id')
 		category = Category.objects.get(id=category_id)
@@ -104,30 +121,30 @@ class DynamicPageImage(View):
 
 
 class Searcher(View):
-    template = "search.html"
+	template = "search.html"
 
-    def get(self, request, *args, **kwargs):
-        query = self.request.GET.get('q')
-        query = query.title().split()
-        for query in query:
-            found_obj = Property.objects.filter(
-                            Q(id_prop__icontains=query)| # blank True null True
-                            Q(category__name__icontains=query)|    #
-                            Q(agent__first_name__icontains=query)| #
-                            Q(agent__last_name__icontains=query)|  #
-                            Q(city__name__iexact=query)|
-                            Q(street__iexact=query)| 
-                            Q(hnum__icontains=query)|
-                            Q(title__icontains=query)| #
-                            Q(saler__icontains=query) # blank True
-                            
-                                     
-                        )
+	def get(self, request, *args, **kwargs):
+		query = self.request.GET.get('q')
+		query = query.title().split()
+		for query in query:
+			found_obj = Property.objects.filter(
+							Q(id_prop__icontains=query)| # blank True null True
+							Q(category__name__icontains=query)|    #
+							Q(agent__first_name__icontains=query)| #
+							Q(agent__last_name__icontains=query)|  #
+							Q(city__name__iexact=query)|
+							Q(street__iexact=query)| 
+							Q(hnum__icontains=query)|
+							Q(title__icontains=query)| #
+							Q(saler__icontains=query) # blank True
+							
+									 
+						)
 
-        context = {
-            'found_obj': (found_obj)
-        }
+		context = {
+			'found_obj': (found_obj)
+		}
 
-        return render(self.request, self.template, context)
+		return render(self.request, self.template, context)
 
 

@@ -1523,3 +1523,8 @@ xcustom form elements
   -webkit-padding-start: 0px;
 }
 
+
+.line-width{
+  position: center;
+  width: 100%
+}

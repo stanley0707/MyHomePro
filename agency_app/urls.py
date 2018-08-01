@@ -1,4 +1,5 @@
 from django.conf.urls import url, include
+from agency_app import forms
 from agency_app.views import ( 
         CategoryListView, 
         DynamicCategoryImage, 
@@ -8,13 +9,15 @@ from agency_app.views import (
         DynamicPageImage,
         ObjectListView,
         Searcher,
+        CompletedPage,
     )
 
+
 urlpatterns = [
+    url(r'^contact/', include('contact_form.urls', namespace='contact_form')),
+
     # full category view of models
     url(r'^$', CategoryListView.as_view(), name='base_show'),
-
-    url(r'^contact/', include('contact_form.urls', namespace='contact_form')),
 
     # detail view category lict from category-space
     url(r'^category/(?P<slug>[-\w]+)/$', CategoryDetailView.as_view(), name='category-detail'),
@@ -23,10 +26,21 @@ urlpatterns = [
     
     # detail view page from pages-pace (Pages)
     url(r'^service/(?P<slug>[-\w]+)/$', PagesDetailView.as_view(), name='service-detail'),
-    
+
     # detail view object-page from same category
-    url(r'^(?P<category>[-\w]+)/(?P<slug>[-\w]+)/$', ObjectDetailView.as_view(), name='object-detail'),
-    
+    url(r'^(?P<category>[-\w]+)/(?P<slug>[-\w]+)/$', ObjectDetailView.as_view(
+            template_name="object_detail.html",
+            form_class=forms.BasicContactForm,
+        ),
+        name='object-detail'),
+
+    url(r'completed/$', 
+        CompletedPage.as_view(
+            template_name="object_send_complete.html",
+        ),
+        name='completed'),
+
+
     # cftegory img URL 
     url(r'^show_category_image/$', DynamicCategoryImage.as_view(), name='category_image'),
     

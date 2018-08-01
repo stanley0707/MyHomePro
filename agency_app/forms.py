@@ -104,6 +104,3 @@ class BasicContactForm(ContactForm):
 
     def get_reply_to(self):
         return [self.cleaned_data['email']]
-
-
-        
