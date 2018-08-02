@@ -23,13 +23,13 @@ def prop_id_generate():
 
 
 
-class MainMedia(models.Model):
-    
-    logo_title = models.CharField(max_length=50, null=True, verbose_name=u'название')
-    logo = models.ImageField(upload_to='images', verbose_name=u'логотип', blank=True, null=True)
+class Advertising(models.Model):
+
+    ad_image = models.ImageField()
+    phone_ad = models.CharField(max_length=100)
 
     def __str__(self):
-        return 'логотип' +  self.logo
+        return 'логотип' +  self.load_imagego
 
 class Pages(models.Model):
     """ pages to new pages """
@@ -91,9 +91,11 @@ class Property(models.Model):
     status   = models.BooleanField(verbose_name=u'статус')
     
     area     = models.PositiveIntegerField(default=0, verbose_name=u'метраж')
+    areafield = models.PositiveIntegerField(default=0, verbose_name=u'метраж')
+    appointment = models.CharField(max_length=100, verbose_name=u'назначение')
+    flor     = models.PositiveIntegerField(default=1, verbose_name=u'этажи')
     price    = models.PositiveIntegerField(default=0, verbose_name=u'стоимость')
-    like     = models.PositiveIntegerField(default=0)
-    dislike  = models.PositiveIntegerField(default=0)
+    
     saler    = models.CharField(max_length=150, verbose_name=u'продавец', blank=True)
     salerphone = models.CharField(max_length=150, verbose_name=u'телефон продавца', blank=True)
 

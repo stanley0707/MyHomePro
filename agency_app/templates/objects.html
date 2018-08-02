@@ -3,6 +3,18 @@
 {% block content %}
 {% include "filter.html" %}
  <!-- cd-tab-filter-wrapper -->
+   <div class="sticky" style=" position: absolute;
+  position: sticky;
+  top: 120px;
+  right: 0;
+  float: right;
+  padding: 80px;
+  background: red;
+  color: #fff;
+  font-size: 30px;">
+    "position: sticky" block
+   </div>
+    <div class="content">
     <div class="cd-tab-filter-wrapper">
        <div class="cd-tab-filter">
          <ul class="cd-filters">
@@ -30,6 +42,5 @@
       <div class="cd-fail-message">No results found</div>
       {% endblock contento %}
     </section> <!-- cd-gallery -->
-
-
+    </div>
  {% endblock content %}

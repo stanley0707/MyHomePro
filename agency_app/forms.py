@@ -7,12 +7,13 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
 
 
+
 class BaseEmailFormMixin(object):
     from_email = settings.DEFAULT_FROM_EMAIL
     recipient_list = [email for _, email in settings.MANAGERS]
 
-    subject_template_name = 'email_subject.txt'
-    message_template_name = 'email_template.txt'
+    subject_template_name = 'email_subject_obj.txt'
+    message_template_name = 'email_template_obj.txt'
 
     def get_message(self):
         return loader.render_to_string(self.message_template_name,
@@ -67,6 +68,7 @@ class BaseEmailFormMixin(object):
         headers = self.get_email_headers()
         if headers is not None:
             message_dict['headers'] = headers
+        print(message_dict)
         return message_dict
 
     def send_email(self, request, fail_silently=False):
@@ -97,6 +99,7 @@ class BasicContactForm(ContactForm):
     """
     A very basic contact form you can use out of the box if you wish.
     """
+    propid = forms.CharField(label=_(u'id объекта '), max_length=50)
     name = forms.CharField(label=_(u'имя '), max_length=100)
     email = forms.EmailField(label=_(u'email'), max_length=200)
     phone_field = forms.CharField(label=_(u'телефон'), validators=[validate_even])

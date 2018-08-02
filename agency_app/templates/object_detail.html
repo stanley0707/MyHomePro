@@ -228,12 +228,41 @@ box-shadow: inset 1px 1px 38px -7px rgba(0,252,76,1);
           <div class="col-md-8 ml-auto mr-auto">
             <h2 class="text-center title">Work with us</h2>
             <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
-            <form action=""  class="form" method="post">{% csrf_token %}
-              <div class="form-group">
-                <p>{{ form.as_ul }}</p>
-                <input type="submit" value="напишите нам" />
-              </div>
-            </form>
+
+            <form class="form" method="post" action="">{% csrf_token %}
+                    <div class="form-group">
+                      <div class="input-group">
+                       <input type="text" class="form-control" name="propid" required id="id_propid" value="Объект: {{ article.id_prop }}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+ 
+                        <input type="text" class="form-control" name="name" required id="id_name" placeholder="фио">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+     
+                        <input type="text" class="form-control" name="email" required id="id_email" placeholder="Email...">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input type="text" placeholder="+7(987)654 32 10" name="phone_field" required id="id_phone_field" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+      
+                        <textarea name="body" class="form-control" cols="40" rows="10" required="" id="id_body"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                      <input type="submit" class="btn btn-primary btn-round"></input>
+                    </div>
+                  </form>
           </div>
         </div>
       </div>

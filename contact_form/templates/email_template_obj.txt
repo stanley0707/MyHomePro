@@ -2,7 +2,7 @@
 
 {% trans "Поступила новая заявка с сайта:" %}
 
-
+{% trans "id:" %} {{ propid }}
 {% trans "Имя:" %} {{ name }}
 {% trans "Email:" %} {{ email }}
 {% trans "Телефон:" %} {{ phone_field }}

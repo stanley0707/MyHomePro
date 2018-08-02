@@ -2,7 +2,7 @@
 from django.contrib import admin
 from agency_app.models import( 
         Pages, Category, Property, Agent, PartnerStok, Images, 
-        MainMedia, City
+        Advertising, City
     )
 
 
@@ -31,11 +31,11 @@ class PartnerStokAdmin(admin.ModelAdmin):
 class ThePagesAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
-class AdminMainMedia(admin.ModelAdmin):
+class AdminAdvertising(admin.ModelAdmin):
     pass
         
 admin.site.register(City, CityProp)
-admin.site.register(MainMedia, AdminMainMedia)
+admin.site.register(Advertising, AdminAdvertising)
 admin.site.register(Pages, ThePagesAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Property, PropertyAdmin)

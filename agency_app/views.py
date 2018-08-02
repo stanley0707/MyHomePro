@@ -1,14 +1,13 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from agency_app.models import Pages, Category, Agent, Property, Images, MainMedia, City
+from agency_app.models import Pages, Category, Agent, Property, Images, Advertising, City
 from django.forms import modelformset_factory
-from agency_app.mixins import CategoryListMixin, CategoryListMixin
+from agency_app.mixins import CategoryListMixin, CategoryListMixin, ContactFormMixin
 from django.db.models import Q
 from django.http import JsonResponse
 from django.views import View
 from agency import settings
-from django.urls import reverse
 from django.views.generic import TemplateView, CreateView, FormView
 	
 class ObjectListView(ListView):
@@ -59,21 +58,12 @@ class CompletedPage(TemplateView):
 	template_name = "object_send_complete.html"
 
 
-class ContactFormMixin(object):
-	
-	def form_valid(self, form):
-		form.send_email(self.request)
-		return super(ContactFormMixin, self).form_valid(form)
-
-	def get_success_url(self):
-		return reverse('completed')
-
 
 class ObjectDetailView(ContactFormMixin, FormView, DetailView):
 	model = Property
 	template_name = 'object_detail.html'
 
-	def get_context_data(self,  *args, **kwargs):
+	def get_context_data(self, *args, **kwargs):
 		context = super(ObjectDetailView, self).get_context_data(*args, **kwargs)
 		context['categories'] = Category.objects.all()
 		context['article'] = self.get_object()

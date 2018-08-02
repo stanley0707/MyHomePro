@@ -1,5 +1,6 @@
 from django.views.generic.list import MultipleObjectMixin
 from agency_app.models import  Pages, Category
+from django.urls import reverse
 
 
 class CategoryListMixin(MultipleObjectMixin):
@@ -13,3 +14,12 @@ class CategoryListMixin(MultipleObjectMixin):
         context = {}
         context['pages'] = Pages.objects.all()
         return context
+
+class ContactFormMixin(object):
+    
+    def form_valid(self, form):
+        form.send_email(self.request)
+        return super(ContactFormMixin, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('completed')
