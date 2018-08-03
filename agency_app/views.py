@@ -3,7 +3,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from agency_app.models import Pages, Category, Agent, Property, Images, Advertising, City
 from django.forms import modelformset_factory
-from agency_app.mixins import CategoryListMixin, CategoryListMixin, ContactFormMixin
+from agency_app.mixins import CategoryListMixin, CategoryListMixin, ContactFormMixin, GeoCoorMixin
 from django.db.models import Q
 from django.http import JsonResponse
 from django.views import View
@@ -35,7 +35,7 @@ class CategoryListView(ListView):
 		context['articles'] = Property.objects.all()
 		context['agents'] = Agent.objects.all()
 		context['pages'] = Pages.objects.all()
-		context['main_media'] = MainMedia.objects.all()
+		context['main_media'] = Advertising.objects.all()
 		return context
 
 
@@ -59,7 +59,7 @@ class CompletedPage(TemplateView):
 
 
 
-class ObjectDetailView(ContactFormMixin, FormView, DetailView):
+class ObjectDetailView(ContactFormMixin, GeoCoorMixin, FormView, DetailView):
 	model = Property
 	template_name = 'object_detail.html'
 
@@ -70,6 +70,12 @@ class ObjectDetailView(ContactFormMixin, FormView, DetailView):
 		art_id = self.get_object().pk
 		img = Images.objects.all()
 		context['imges'] = img.filter(album_id=art_id)
+		context['geoposition'] = GeoCoorMixin.geoloc(
+								self.get_object().city,
+								self.get_object().street,
+								self.get_object().hnum
+							)
+		print(type(context['geoposition'][1]))
 		return context
 
 
@@ -136,5 +142,7 @@ class Searcher(View):
 		}
 
 		return render(self.request, self.template, context)
+
+
 
 

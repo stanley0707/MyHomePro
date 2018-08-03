@@ -21,8 +21,6 @@ def prop_id_generate():
     return  ''.join([random.choice(list('1234567890')) for x in range(5)])
 
 
-
-
 class Advertising(models.Model):
 
     ad_image = models.ImageField()
@@ -72,6 +70,7 @@ class Category(models.Model):
 
 class Property(models.Model):
     """ property object class """
+    
     id_prop  = models.CharField(max_length=150, verbose_name=u'id объекта', default=prop_id_generate, blank=True, null=True)
     category = models.ForeignKey(Category, verbose_name=u'категоря')
     stok     = models.ForeignKey('PartnerStok', verbose_name=u'акция', on_delete=models.PROTECT, blank=True, null=True)
@@ -91,7 +90,7 @@ class Property(models.Model):
     status   = models.BooleanField(verbose_name=u'статус')
     
     area     = models.PositiveIntegerField(default=0, verbose_name=u'метраж')
-    areafield = models.PositiveIntegerField(default=0, verbose_name=u'метраж')
+    areafield = models.PositiveIntegerField(default=0, verbose_name=u'площадь')
     appointment = models.CharField(max_length=100, verbose_name=u'назначение')
     flor     = models.PositiveIntegerField(default=1, verbose_name=u'этажи')
     price    = models.PositiveIntegerField(default=0, verbose_name=u'стоимость')

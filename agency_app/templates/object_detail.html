@@ -1,5 +1,24 @@
 {% extends 'index.html' %}
 {% load static %}
+{% block mapscript %}
+    <script type="text/javascript">
+        ymaps.ready(init);
+      
+        function init(){ 
+            var myMap = new ymaps.Map("map", {
+                center: {{ geoposition }},
+                zoom: 7
+            }); 
+            
+            var myPlacemark = new ymaps.Placemark({{ geoposition }}, {
+                hintContent: ('{{ article.city }}, {{ article.street }}, {{ article.hnum }}'),
+                balloonContent: 'Содержимое балуна'
+            });
+            
+            myMap.geoObjects.add(myPlacemark);
+        }
+    </script>
+{% endblock mapscript %}
 {% block content %}
 <style type="text/css">
   .cd-main-content .mypage-alo-phone {
@@ -196,7 +215,7 @@ box-shadow: inset 1px 1px 38px -7px rgba(0,252,76,1);
                       <i class="material-icons">location_searching</i>
                     </div>
                     <div class="description">
-                      <h5 class="info-title">адрес: {{ article.city }}, {{ article.street }}, {{ article.hnum }}</h5>
+                      <h5 class="info-title">адрес: {{ article.city }}, {{ article.street }}, {{ article.hnum }} {{ aticle.coordinates }}</h5>
                     </div>
                   </div>
                   <div class="info info-horizontal">
@@ -220,6 +239,7 @@ box-shadow: inset 1px 1px 38px -7px rgba(0,252,76,1);
                     </div>
                   </div>
                 </div>
+                <div id="map" style="width: 600px; height: 400px"></div>
             </div>
           </div>
           <div class="tab-pane text-center gallery" id="favorite">

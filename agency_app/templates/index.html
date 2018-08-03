@@ -19,8 +19,9 @@
   <link href="{% static 'css/main.css' %}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{% static 'css/pattern.css' %}" rel="stylesheet" />
- 
-  
+     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript">
+    </script>
+    {% block mapscript %}{% endblock mapscript %}
 </head>
 
 <body class="landing-page signup-page sidebar-collapse ">

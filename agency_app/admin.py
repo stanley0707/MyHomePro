@@ -18,7 +18,9 @@ class CityProp(admin.ModelAdmin):
 
 class PropertyAdmin(admin.ModelAdmin):
     prepopulated_fields = {
-        'slug': ('title',)}
+        'slug': ('title',),
+    }
+
     inlines = [PropImagesAdminInline]
 
 
