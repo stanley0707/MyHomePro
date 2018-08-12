@@ -17,6 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+
+from agency_app.views import ( 
+        error_404,
+        error_500,
+    )
+
 admin.autodiscover()
 
 urlpatterns = [
@@ -24,6 +30,8 @@ urlpatterns = [
     url(r'^admin/search/', include('suit.urls')),
     url(r'^', include('agency_app.urls')),
 ]
+
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

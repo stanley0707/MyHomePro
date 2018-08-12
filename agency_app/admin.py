@@ -1,8 +1,16 @@
 
 from django.contrib import admin
 from agency_app.models import( 
-        Pages, Category, Property, Agent, PartnerStok, Images, 
-        Advertising, City
+        Pages,
+        Category,
+        Property,
+        Agent,
+        PartnerStok,
+        Images, 
+        Advertising,
+        City,
+        Qeustions,
+        Appointement
     )
 
 
@@ -35,7 +43,18 @@ class ThePagesAdmin(admin.ModelAdmin):
 
 class AdminAdvertising(admin.ModelAdmin):
     pass
+
+class QeustionsAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug': ('quest',),
+    }
+
+class AppointementAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug': ('appointment',),
+    }
         
+
 admin.site.register(City, CityProp)
 admin.site.register(Advertising, AdminAdvertising)
 admin.site.register(Pages, ThePagesAdmin)
@@ -43,3 +62,5 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(Agent, AgentAdmin)
 admin.site.register(PartnerStok, PartnerStokAdmin)
+admin.site.register(Qeustions, QeustionsAdmin)
+admin.site.register(Appointement, AppointementAdmin)

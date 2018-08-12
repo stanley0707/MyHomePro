@@ -1,28 +1,51 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from agency_app.models import Pages, Category, Agent, Property, Images, Advertising, City
+from agency_app.models import (
+		Pages,
+		Category,
+		Agent,
+		Property,
+		Images,
+		Advertising,
+		City,
+		Qeustions,
+		Appointement
+	)
+
 from django.forms import modelformset_factory
-from agency_app.mixins import CategoryListMixin, CategoryListMixin, ContactFormMixin, GeoCoorMixin
+from agency_app.mixins import(
+		CategoryListMixin,
+		CategoryListMixin,
+		ContactFormMixin,
+		GeoCoorMixin
+	)
+
 from django.db.models import Q
 from django.http import JsonResponse
 from django.views import View
 from agency import settings
 from django.views.generic import TemplateView, CreateView, FormView
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 	
+
 class ObjectListView(ListView):
 	model = Property
 	template_name = 'objects.html'
 	
 	def get_context_data(self, *args, **kwargs):
+		
 		context = super(ObjectListView, self).get_context_data(*args, **kwargs)
 		context['categories'] = Category.objects.all()
 		context['articles'] = self.model.objects.all()
 		context['pages'] = Pages.objects.all()
 		context['cities'] = City.objects.all()
+		context['main_media'] = Advertising.objects.all()
+		context['question'] = Qeustions.objects.all()
+		context['appointment'] = Appointement.objects.all()
+		
 		return context
-
-
 
 
 class CategoryListView(ListView):
@@ -37,7 +60,6 @@ class CategoryListView(ListView):
 		context['pages'] = Pages.objects.all()
 		context['main_media'] = Advertising.objects.all()
 		return context
-
 
 
 class CategoryDetailView(DetailView, CategoryListMixin):
@@ -58,7 +80,6 @@ class CompletedPage(TemplateView):
 	template_name = "object_send_complete.html"
 
 
-
 class ObjectDetailView(ContactFormMixin, GeoCoorMixin, FormView, DetailView):
 	model = Property
 	template_name = 'object_detail.html'
@@ -75,13 +96,11 @@ class ObjectDetailView(ContactFormMixin, GeoCoorMixin, FormView, DetailView):
 								self.get_object().street,
 								self.get_object().hnum
 							)
-		print(type(context['geoposition'][1]))
 		return context
 
 
 class ContactModelFormView(ContactFormMixin, CreateView):
 	pass
-
 
 
 class DynamicCategoryImage(View):
@@ -115,7 +134,6 @@ class DynamicPageImage(View):
 		return JsonResponse(data)
 
 
-
 class Searcher(View):
 	template = "search.html"
 
@@ -144,5 +162,16 @@ class Searcher(View):
 		return render(self.request, self.template, context)
 
 
-
+def error_404(request):
+    context = RequestContext(request)
+    response = render_to_response('error_404.html', context)
+    response.status_code = 404
+    return response
+ 
+ 
+def error_500(request):
+    context = RequestContext(request)
+    response = render_to_response('error_500.html', context)
+    response.status_code = 500
+    return response
 

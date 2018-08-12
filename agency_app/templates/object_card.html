@@ -1,14 +1,14 @@
 {% load static %}
-<li class="mix mix-price selected_obj {{ article.city.slug }} {{ article.category.slug }} {{ article.price }} {{ article.stok.tag }} {% if article.status %} interest {% endif %}" id="mixit" data-price="{{ article.price }}" >
-<div class="card mb-3 line_card card-nav-tabs" >
+<li class="mix mix-price selected_obj {{ article.city.slug }} {{ article.category.slug }} {{ article.price }} {{ article.stok.tag }} {{ article.appointment.slug }} {% if article.status %} interest {% endif %}" id="mixit" data-price="{{ article.price }}" >
+<div class="card mb-3 line_card card-nav-tabs">
     <div class="img-container">
-     <img class="card-img-top" src="{{ article.image.url }}" alt="Card image cap">
-    </div>
-    <div class="card-img-overlay">
+     
+    <div class="card-img-overlay prop_img">
     {% if article.stok %}
-    <button type="button" class="btn btn-secondary card_obj" data-toggle="tooltip" data-placement="right"title="{{ article.stok }}  {{ article.company_url }}">
-      <i class="material-icons">loyalty</i> акция
-      </button>
+
+<span type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{{ article.stok }}">
+  акция
+</span>
     {% endif %}
     <span class="badge badge-primary card_info_obj" style=" float: right!important;
   background-color:#fff!important;
@@ -23,13 +23,16 @@
   color:#555 !important;
   margin: 7px !important; "> id: {{ article.id_prop }}</span>
     </div>
-
+    <img class="card-img-top " src="{{ article.image.url }}" alt="Card image cap">
+    </div>
   <div class="card-body">
-    <div class="col-sm-2 ml-auto card_agent_avatar">
+    <div class="aget-info">
+    <div class=" ml-auto card_agent_avatar">
        <img src="{{ article.agent.avatar.url }}" alt="Thumbnail Image" class="rounded-circle img-fluid">
     </div>
-    <p>{{ article.agent.first_name }} {{ article.agent.last_name }}</p>
-    <p class="text-muted">агент</p>
+    <p class="card-agent-name">{{ article.agent.first_name }} {{ article.agent.last_name }}</p>
+    <p class="text-muted card-major">агент</p>
+    </div>
     <h4 class="card-title">{{ article.title }}</h4>
     <p class="card-text">{{ article.desc|truncatechars:130 }}</p>
     <p class="card-text"><small class="text-muted">{{ article.date }}</small></p>

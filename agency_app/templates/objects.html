@@ -3,30 +3,160 @@
 {% block content %}
 {% include "filter.html" %}
  <!-- cd-tab-filter-wrapper -->
-   <div class="sticky" style=" position: absolute;
-  position: sticky;
-  top: 120px;
-  right: 0;
-  float: right;
-  padding: 80px;
-  background: red;
-  color: #fff;
-  font-size: 30px;">
-    "position: sticky" block
+
+   <div class="sticky">
+  <section id="slider" class="container">
+    <ul class="slider-wrapper">
+      {% for add in main_media %}
+        <li class="current-slide">
+          <img src="{{ add.adimage.url }}" title="" alt="">
+        </li>
+      {% endfor %}
+        {% for add in articles %}
+          {% if add.status %}
+            <li class="current-slide">
+              <a href="{{ add.get_absolute_url }}">
+
+              <img src="{{ add.image.url }}" title="{{ add.title }}" alt=""><div style="width: 100%; height: 100%; background-color: #222; opacity: 0.3; position: absolute; right: 0%"></div>
+              <div class="card-img-overlay">
+              <h1 style="color: #fff; font-size: 1.3em; font-weight: 800">{{ add.title }}</h1>
+              <h1 style="color: #fff; font-size: 1em; font-weight: 800">{{ add.city }}</h1>
+              <h1 style="color: #fff; font-size: 1em; font-weight: 800">{{ add.price }} рублей</h1>
+
+              </div>
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+
+    </ul>
+    <!-- Sombras -->
+    <div class="slider-shadow"></div>
+
+  </section>
+
+
+   <div class="sticky-quest questions">
+   {% for q in question %}
+   
+      <button type="button"  class="card" data-toggle="modal" data-target="#{{ q.slug }}">
+                <div class="card-body">
+                        {{ q.quest }}
+                </div>
+        </button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="{{ q.slug }}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{ q.quest }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ q.answer }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">закрыть</button>
+        <button type="button" class="btn btn-primary">подробно</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
    </div>
+   <div id="sidebar" class="sticky-menu sidebar-menu is_stuck">
+     <div class="card card-nav-tabs">
+      <form class="form-inline ml-auto" type="submit" method="GET" action='{% url "saerch_view" %}'>
+        <div class="card-header card-header-info">
+                          <div class="form-group no-border">
+                  <input type="text" class="form-control" placeholder="поиск" name="q">
+                </div>
+                <button type="submit" class="btn btn-white btn-just-icon btn-round">
+                    <i class="material-icons">search</i>
+                </button> 
+        </div>
+                  <div class="cd-filter-block">
+
+          <ul class="cd-filter-content cd-filters list">
+            <h4> опции </h4>
+            <li>
+              <div class="togglebutton">
+              <label>
+                    <input class="filter-price" data-filter=".price" type="checkbox" id="checkbox1">
+                    <span class="toggle" for="price"></span> цена
+              </label>
+            </div>
+            </li>
+
+            <li>
+              <div class="togglebutton">
+              <label>
+                    <input class="filter" data-filter=".tagstock" type="checkbox" id="checkbox1">
+                    <span class="toggle" for="tagstock"></span> акции 
+              </label>
+            </div>
+            </li>
+            <li>
+              <div class="togglebutton">
+              <label>
+                    <input class="filter" data-filter=".tagstock" type="checkbox" id="checkbox1">
+                    <span class="toggle" for="tagstock"></span> популярное
+              </label>
+            </div>
+            </li>
+          </ul> <!-- cd-filter-content -->
+        </div> <!-- cd-filter-block -->
+        <div class="cd-filter-block" style="width: 100%;">
+          <h4> города </h4>
+
+          <ul class="cd-filter-content cd-filters list" style="width: 100%;">
+             {% for appoint in appointment %}
+             <li>
+              <div class="togglebutton">
+              <label>
+                    <input class="filter"  data-filter=".{{ appoint.slug }}" type="checkbox" id="checkbox1">
+                    <span class="toggle" for="{{ appoint.slug }}"></span>{{ appoint }}
+              </label>
+            </div>
+            </li>
+               {% endfor %}
+          </ul> <!-- cd-filter-content -->
+        </div> <!-- cd-filter-block -->
+
+        <div class="cd-filter-block" style="width: 100%;">
+          <h4> города </h4>
+
+          <ul class="cd-filter-content cd-filters list" style="width: 100%;">
+             {% for city in cities %}
+             <li>
+              <div class="togglebutton">
+              <label>
+                    <input class="filter"  data-filter=".{{ city.slug }}" type="checkbox" id="checkbox1">
+                    <span class="toggle" for="{{ city.slug }}"></span>{{ city }}
+              </label>
+            </div>
+            </li>
+               {% endfor %}
+          </ul> <!-- cd-filter-content -->
+        </div> <!-- cd-filter-block -->
+      </form>
+      </div>
+</div>
+
     <div class="content">
+
     <div class="cd-tab-filter-wrapper">
-       <div class="cd-tab-filter">
-         <ul class="cd-filters">
-          <li class="placeholder"> 
-            <a data-type="all" href="#0">All</a> <!-- selected option on mobile -->
-          </li> 
-          <li class="filter"><a class="selected" href="#0" data-type="all">All</a></li>
-          <li class="filter" data-filter=".color-1"><a href="#0" data-type="color-1">Color 1</a></li>
-          <li class="filter" data-filter=".color-2"><a href="#0" data-type="color-2">Color 2</a></li>
-        </ul> <!-- cd- filters -->
+
+       <div class="cd-tab-filter" >
+
       </div> <!-- cd-tab-filter -->
     </div> <!-- cd-tab-filter-wrapper -->
+
     <section class="cd-gallery">
       {% block contento %}
       <ul class="cd-gallery-price">
@@ -42,5 +172,110 @@
       <div class="cd-fail-message">No results found</div>
       {% endblock contento %}
     </section> <!-- cd-gallery -->
+
     </div>
+
  {% endblock content %}
+ {% block sliderscript %}
+ <script type="text/javascript">
+$(function() {
+  /** -----------------------------------------
+   * Modulo del Slider 
+   -------------------------------------------*/
+   var SliderModule = (function() {
+    var pb = {};
+    pb.el = $('#slider');
+    pb.items = {
+      panels: pb.el.find('.slider-wrapper > li'),
+    }
+
+    // Interval del Slider
+    var SliderInterval,
+      currentSlider = 0,
+      nextSlider = 1,
+      lengthSlider = pb.items.panels.length;
+
+    // Constructor del Slider
+    pb.init = function(settings) {
+      this.settings = settings || {duration: 8000};
+      var items = this.items,
+        lengthPanels = items.panels.length,
+        output = '';
+
+      // Insertamos nuestros botones
+      for(var i = 0; i < lengthPanels; i++) {
+        if(i == 0) {
+          output += '<li class="active"></li>';
+        } else {
+          output += '<li></li>';
+        }
+      }
+
+      $('#control-buttons').html(output);
+
+      // Activamos nuestro Slider
+      activateSlider();
+      // Eventos para los controles
+      $('#control-buttons').on('click', 'li', function(e) {
+        var $this = $(this);
+        if(!(currentSlider === $this.index())) {
+          changePanel($this.index());
+        }
+      });
+
+    }
+
+    // Funcion para activar el Slider
+    var activateSlider = function() {
+      SliderInterval = setInterval(pb.startSlider, pb.settings.duration);
+    }
+
+    // Funcion para la Animacion
+    pb.startSlider = function() {
+      var items = pb.items,
+        controls = $('#control-buttons li');
+      // Comprobamos si es el ultimo panel para reiniciar el conteo
+      if(nextSlider >= lengthSlider) {
+        nextSlider = 0;
+        currentSlider = lengthSlider-1;
+      }
+
+      controls.removeClass('active').eq(nextSlider).addClass('active');
+      items.panels.eq(currentSlider).fadeOut('slow');
+      items.panels.eq(nextSlider).fadeIn('slow');
+
+      // Actualizamos los datos del slider
+      currentSlider = nextSlider;
+      nextSlider += 1;
+    }
+
+    // Funcion para Cambiar de Panel con Los Controles
+    var changePanel = function(id) {
+      clearInterval(SliderInterval);
+      var items = pb.items,
+        controls = $('#control-buttons li');
+      // Comprobamos si el ID esta disponible entre los paneles
+      if(id >= lengthSlider) {
+        id = 0;
+      } else if(id < 0) {
+        id = lengthSlider-1;
+      }
+
+      controls.removeClass('active').eq(id).addClass('active');
+      items.panels.eq(currentSlider).fadeOut('slow');
+      items.panels.eq(id).fadeIn('slow');
+
+      // Volvemos a actualizar los datos del slider
+      currentSlider = id;
+      nextSlider = id+1;
+      // Reactivamos nuestro slider
+      activateSlider();
+    }
+
+    return pb;
+   }());
+
+   SliderModule.init({duration: 4000});
+
+});
+  </script>{% endblock sliderscript %}

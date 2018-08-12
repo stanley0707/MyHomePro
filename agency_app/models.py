@@ -17,17 +17,22 @@ def generate_filename(instance, filename):
     filename = instance.slug + '.jpg'
     return '{}'.format(instance.slug) + "/" + '{}'.format(filename)
 
+# images generator
+def generate_add_dir(instance, filename):
+    return '{}'.format(instance) + "/" + '{}'.format(filename)
+
+
 def prop_id_generate():
     return  ''.join([random.choice(list('1234567890')) for x in range(5)])
 
 
 class Advertising(models.Model):
 
-    ad_image = models.ImageField()
-    phone_ad = models.CharField(max_length=100)
+    phonead = models.CharField(max_length=100, null=True)
+    adimage = models.ImageField(upload_to=generate_add_dir, verbose_name=u'заглавное изображенe', blank=True, null=True)
 
     def __str__(self):
-        return 'логотип' +  self.load_imagego
+        return self.phonead
 
 class Pages(models.Model):
     """ pages to new pages """
@@ -75,6 +80,7 @@ class Property(models.Model):
     category = models.ForeignKey(Category, verbose_name=u'категоря')
     stok     = models.ForeignKey('PartnerStok', verbose_name=u'акция', on_delete=models.PROTECT, blank=True, null=True)
     agent    = models.ForeignKey('Agent', verbose_name=u'агент', on_delete=models.PROTECT)
+    appointment = models.ForeignKey('Appointement', verbose_name=u'назначение', on_delete=models.PROTECT)
     
     city     = models.ForeignKey('City', verbose_name=u'город', on_delete=models.PROTECT)
     street   = models.CharField(max_length=150, verbose_name=u'улица', blank=True)
@@ -87,11 +93,10 @@ class Property(models.Model):
     
     image    = models.ImageField(upload_to=generate_filename, verbose_name=u'заглавное изображенe', blank=True, null=True)
     date     = models.DateTimeField(blank=True, null=True, verbose_name=u'дата публикации')
-    status   = models.BooleanField(verbose_name=u'статус')
+    status   = models.BooleanField(verbose_name=u'рекламировать')
     
     area     = models.PositiveIntegerField(default=0, verbose_name=u'метраж')
     areafield = models.PositiveIntegerField(default=0, verbose_name=u'площадь')
-    appointment = models.CharField(max_length=100, verbose_name=u'назначение')
     flor     = models.PositiveIntegerField(default=1, verbose_name=u'этажи')
     price    = models.PositiveIntegerField(default=0, verbose_name=u'стоимость')
     
@@ -134,6 +139,16 @@ class Images(models.Model):
         verbose_name = 'изображение'
         verbose_name_plural = 'изображения'
 
+class Appointement(models.Model):
+    appointment = models.CharField(max_length=100, verbose_name=u'назначение')
+    slug = models.SlugField()
+
+    def __str__(self):
+        return "{}".format(self.appointment)
+
+    class Meta:
+        verbose_name = 'назначение'
+        verbose_name_plural = 'назначение'
 
 
 class Agent(models.Model):
@@ -169,3 +184,17 @@ class PartnerStok(models.Model):
     class Meta:
         verbose_name = 'скидка'
         verbose_name_plural = 'скидки'
+
+class Qeustions(models.Model):
+    
+    quest = models.CharField(max_length=300, null=True, verbose_name=u'вопрос')
+    answer = models.CharField(max_length=300, null=True, verbose_name=u'ответ')
+    slug  = models.SlugField()
+
+    class Meta:
+        verbose_name = 'вопрос'
+        verbose_name_plural = 'вопросы'
+
+    def __str__(self):
+        return self.quest
+        

@@ -61,6 +61,7 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fafafa;
+
 }
 
 [tabindex="-1"]:focus {
@@ -2621,7 +2622,6 @@ select.form-control-lg:not([size]):not([multiple]),
 }
 
 .btn {
-  display: inline-block;
   font-weight: 400;
   text-align: center;
   white-space: nowrap;
@@ -4580,7 +4580,7 @@ tbody.collapse.show {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 0.25rem;
+  border-radius: 0.2em !important;
 }
 
 .card>hr {
@@ -8855,7 +8855,6 @@ button:focus {
 }
 
 .btn {
-  position: relative;
   padding: 12px 30px;
   margin: 0.3125rem 1px;
   font-size: .75rem;
@@ -12079,7 +12078,7 @@ fieldset[disabled] .is-focused .switch label:focus {
 
 .form-control,
 .is-focused .form-control {
-  background-image: linear-gradient(to top, #9c27b0 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
+  background-image: linear-gradient(to top, #fff 1px), linear-gradient(to top, #efefef 1px);
 }
 
 .form-control:invalid {
@@ -15869,11 +15868,11 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle {
-  background-color: rgba(156, 39, 176, 0.7);
+  background-color: rgba(0, 188, 212, 0.6);
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle:after {
-  border-color: #9c27b0;
+  border-color: rgba(0, 188, 212, 0.6);
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle:active:after {
