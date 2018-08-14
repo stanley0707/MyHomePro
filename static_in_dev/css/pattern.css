@@ -1785,7 +1785,7 @@ xcustom form elements
       }
 
       .sticky-menu .card{
-       height: 800px;
+       height: auto;
       }
       .sticky-menu .card .card-header{
            display: inline-flex;
@@ -1810,6 +1810,32 @@ xcustom form elements
 
  }
 
+.noUi-target {
+    background: #c8c8c8;
+    border-radius: 4px;
+}
+
+.noUi-horizontal {
+    height: 2px;
+    margin: 15px 0;
+}
+
+.noUi-target {
+    position: relative;
+    direction: ltr;
+}
+
+.noUi-target, .noUi-target * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-touch-action: none;
+    touch-action: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 
  

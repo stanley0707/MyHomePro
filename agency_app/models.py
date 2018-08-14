@@ -10,7 +10,6 @@ def generate_icon(instance, filename):
     filename = instance.slug + '.svg'
     return '{}'.format(filename)
 
-
 # images generator
 def generate_filename(instance, filename):
     
@@ -34,6 +33,10 @@ class Advertising(models.Model):
     def __str__(self):
         return self.phonead
 
+    class Meta:
+        verbose_name = 'рекламу'
+        verbose_name_plural = 'реклама'
+
 class Pages(models.Model):
     """ pages to new pages """
     
@@ -51,8 +54,8 @@ class Pages(models.Model):
         return reverse('service-detail', kwargs={'slug': self.slug})
 
     class Meta:
-        verbose_name = 'страница'
-        verbose_name_plural = 'страницы'
+        verbose_name = 'страницу'
+        verbose_name_plural = 'страница'
 
 
 class Category(models.Model):
@@ -69,7 +72,7 @@ class Category(models.Model):
         return reverse('category-detail', kwargs={'slug': self.slug})
 
     class Meta:
-        verbose_name = 'категоря'
+        verbose_name = 'категорию'
         verbose_name_plural = 'категории'
 
 
@@ -165,7 +168,7 @@ class Agent(models.Model):
 
 
     class Meta:
-        verbose_name = 'агент'
+        verbose_name = 'агента'
         verbose_name_plural = 'агенты'
 
 
@@ -182,7 +185,7 @@ class PartnerStok(models.Model):
         return  "Акция {}. Партнер {}".format(self.condition, self.company_name)
 
     class Meta:
-        verbose_name = 'скидка'
+        verbose_name = 'скидку'
         verbose_name_plural = 'скидки'
 
 class Qeustions(models.Model):

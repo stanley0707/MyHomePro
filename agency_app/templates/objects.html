@@ -3,7 +3,7 @@
 {% block content %}
 {% include "filter.html" %}
  <!-- cd-tab-filter-wrapper -->
-
+              
    <div class="sticky">
   <section id="slider" class="container">
     <ul class="slider-wrapper">
@@ -79,12 +79,22 @@
                 <button type="submit" class="btn btn-white btn-just-icon btn-round">
                     <i class="material-icons">search</i>
                 </button> 
+
         </div>
                   <div class="cd-filter-block">
 
           <ul class="cd-filter-content cd-filters list">
-            <h4> опции </h4>
             <li>
+          <div id="slider-range" >
+            <label for="amount"> фильтр
+              </label>
+              <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold; "  />
+              
+            
+          </div>
+          </li>
+            <h4> опции </h4>
+              <li>
               <div class="togglebutton">
               <label>
                     <input class="filter-price" data-filter=".price" type="checkbox" id="checkbox1">
@@ -101,18 +111,10 @@
               </label>
             </div>
             </li>
-            <li>
-              <div class="togglebutton">
-              <label>
-                    <input class="filter" data-filter=".tagstock" type="checkbox" id="checkbox1">
-                    <span class="toggle" for="tagstock"></span> популярное
-              </label>
-            </div>
-            </li>
           </ul> <!-- cd-filter-content -->
         </div> <!-- cd-filter-block -->
         <div class="cd-filter-block" style="width: 100%;">
-          <h4> города </h4>
+          <h4> назначение </h4>
 
           <ul class="cd-filter-content cd-filters list" style="width: 100%;">
              {% for appoint in appointment %}
@@ -149,17 +151,16 @@
 </div>
 
     <div class="content">
-
     <div class="cd-tab-filter-wrapper">
 
        <div class="cd-tab-filter" >
 
       </div> <!-- cd-tab-filter -->
     </div> <!-- cd-tab-filter-wrapper -->
-
-    <section class="cd-gallery">
+    
+    <section class="cd-gallery" id="CategoryContent">
       {% block contento %}
-      <ul class="cd-gallery-price">
+      <ul class="cd-gallery-price"  id="products">
         {% block content_сategiries %}
             {% for article in articles %}
                 {% include "object_card.html" %}
@@ -172,8 +173,8 @@
       <div class="cd-fail-message">No results found</div>
       {% endblock contento %}
     </section> <!-- cd-gallery -->
-
     </div>
+
 
  {% endblock content %}
  {% block sliderscript %}
