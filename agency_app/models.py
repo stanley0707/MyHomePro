@@ -107,8 +107,8 @@ class Property(models.Model):
     salerphone = models.CharField(max_length=150, verbose_name=u'телефон продавца', blank=True)
 
     def __str__(self):
-        return "Объект: {}, г. {}, ул. {}, д. {}, собственник: {} ({})".format(
-            self.id_prop, self.city, self.street, self.hnum, self.saler, self.salerphone,)
+        return "Объект: {}, г. {}, ул. {}, д. {}, собственник: {} ({}), цена {}".format(
+            self.id_prop, self.city, self.street, self.hnum, self.saler, self.salerphone, self.price)
 
     def get_absolute_url(self):
         return reverse('object-detail', kwargs={'category': self.category.slug, 'slug': self.slug})

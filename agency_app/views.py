@@ -18,7 +18,8 @@ from agency_app.mixins import(
 		CategoryListMixin,
 		CategoryListMixin,
 		ContactFormMixin,
-		GeoCoorMixin
+		GeoCoorMixin,
+
 	)
 
 from django.db.models import Q
@@ -46,6 +47,7 @@ class ObjectListView(ListView):
 		context['appointment'] = Appointement.objects.all()
 		
 		return context
+
 
 
 class CategoryListView(ListView):
@@ -161,7 +163,7 @@ class Searcher(View):
 
 		return render(self.request, self.template, context)
 
-
+ 
 def error_404(request):
     context = RequestContext(request)
     response = render_to_response('error_404.html', context)
