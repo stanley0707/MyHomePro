@@ -1156,7 +1156,7 @@ Main Components
   display: table;
   clear: both;
 }
-.cd-main-content.is-fixed .cd-tab-filter-wrapper {
+.cd-tab-filter-wrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -1181,7 +1181,7 @@ xtab-filter
 -------------------------------- */
 .cd-tab-filter-wrapper {
   background-color: #ffffff;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0,0, 0.2);
   z-index: 1;
   height: 60px;
 }

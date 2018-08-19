@@ -4,15 +4,15 @@
 {% include "filter.html" %}
  <!-- cd-tab-filter-wrapper -->
               
-   <div class="sticky">
-  <section id="slider" class="container">
-    <ul class="slider-wrapper">
-      {% for add in main_media %}
+  <div class="sticky">
+    <section id="slider" class="container">
+      <ul class="slider-wrapper">
+        {% for add in main_media %}
         
         <li class="current-slide">
           <img src="{{ add.adimage.url }}" title="" alt="">
         </li>
-      {% endfor %}
+        {% endfor %}
         {% for add in articles %}
           {% if add.status %}
             <li class="current-slide">
