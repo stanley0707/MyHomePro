@@ -1,11 +1,13 @@
 {% extends 'objects.html' %}
 {% load static %}
-{% block contento %}
-<div class="card">
+{% block card %}
+<div class="card q_card">
     <div class="card-body">
             <h6>По запросу <a href="https://www.google.com/search?q={{ qu }}">{{ qu }}</a> найдено: {{ articles.count }} {{ word }} </h6>
     </div>
 </div>
+{% endblock card %}
+{% block contento %}
     {% for article in articles %}
         {% include "object_card.html" %}
     {% endfor %}

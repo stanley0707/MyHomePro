@@ -46,6 +46,7 @@ def deviation(num):
 		d_des = description.get(3)
 		return d_des
 
+
 class ObjectListView(ListView):
 	model = Property
 	template_name = 'objects.html'
@@ -179,7 +180,11 @@ class Searcher(View):
 		context = {
 			'articles': (found_obj),
 			'qu': (query),
-			'word': num
+			'word': num,
+			'main_media': Advertising.objects.all(),
+			'cities': City.objects.all(),
+			'question': Qeustions.objects.all(),
+			'appointment': Appointement.objects.all(),
 		}
 		
 		return render(self.request, self.template, context)
