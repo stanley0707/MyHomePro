@@ -27,9 +27,24 @@ from django.http import JsonResponse
 from django.views import View
 from agency import settings
 from django.views.generic import TemplateView, CreateView, FormView
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-	
+
+def deviation(num):
+
+	description = {
+		1:'объект',
+		2:'объекта',
+		3:'объектов'
+	}
+		
+	if num % 10 == 1:
+		d_des = description.get(1)
+		return d_des
+	elif 1 < num  % 10 < 5:
+		d_des = description.get(2)
+		return d_des
+	else:
+		d_des = description.get(3)
+		return d_des
 
 class ObjectListView(ListView):
 	model = Property
@@ -137,8 +152,9 @@ class DynamicPageImage(View):
 
 
 class Searcher(View):
+	
 	template = "search.html"
-
+	
 	def get(self, request, *args, **kwargs):
 		query = self.request.GET.get('q')
 		query = query.title().split()
@@ -156,24 +172,19 @@ class Searcher(View):
 							
 									 
 						)
-
+		
+		num = len([i for i in found_obj])
+		num = deviation(num)
+		print(num)
 		context = {
-			'found_obj': (found_obj)
+			'articles': (found_obj),
+			'qu': (query),
+			'word': num
 		}
-
+		
 		return render(self.request, self.template, context)
 
- 
-def error_404(request):
-    context = RequestContext(request)
-    response = render_to_response('error_404.html', context)
-    response.status_code = 404
-    return response
- 
- 
-def error_500(request):
-    context = RequestContext(request)
-    response = render_to_response('error_500.html', context)
-    response.status_code = 500
-    return response
+
+
+
 

@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from agency_app import forms
-from django.conf.urls import handler404, handler500
+
 from agency_app.views import ( 
         CategoryListView, 
         DynamicCategoryImage, 
@@ -11,8 +11,6 @@ from agency_app.views import (
         ObjectListView,
         Searcher,
         CompletedPage,
-        error_404,
-        error_500,
     )
 
 
@@ -58,6 +56,3 @@ urlpatterns = [
 
 
 ]
-
-handler404 = error_404
-handler500 = error_500

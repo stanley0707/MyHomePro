@@ -1,14 +1,12 @@
 {% extends 'objects.html' %}
+{% load static %}
 {% block contento %}
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h3>объектов найдено: {{ found_obj.count }} </h3>
-            {% for object in found_obj %}
-              <h4><a href="{{ get_absolute_url }}">{{ object.title }}</a></h4>
-              <p>{{ object.desc|truncatewords:30 }}</p>
-            {% endfor %}
-        </div>
+<div class="card">
+    <div class="card-body">
+            <h6>По запросу <a href="https://www.google.com/search?q={{ qu }}">{{ qu }}</a> найдено: {{ articles.count }} {{ word }} </h6>
     </div>
 </div>
+    {% for article in articles %}
+        {% include "object_card.html" %}
+    {% endfor %}
 {% endblock contento %}

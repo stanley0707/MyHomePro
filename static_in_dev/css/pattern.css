@@ -1367,7 +1367,7 @@ xgallery
 
 @media only screen and (min-width: 768px) {
   .cd-gallery {
-    padding: 40px 1%!important;
+    padding: 40px 1% 30px!important;
     padding-top: 60px !important;
     width: 100%;
     float: right;
@@ -1606,6 +1606,7 @@ xcustom form elements
 
 .sticky .slider-wrapper {
   position: relative;
+  border-radius: 2px;
   width: 250px;
   height: 350px;
   background: #FFF;
@@ -1682,8 +1683,9 @@ xcustom form elements
 }
 
 .sticky-quest .card{
-    margin-bottom: 15px;
-    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-top: 3%;
+    border-radius: 2px;
     width: 250px;
     border-radius: 0.1em !important;
 
@@ -1783,7 +1785,8 @@ xcustom form elements
         display: block;
         padding: 1px;
         padding-top: 66px;
-        padding-bottom: 0 auto!important;
+
+        
       }
       
       .cd-gallery{
@@ -1835,9 +1838,6 @@ xcustom form elements
           margin-bottom: 0;
       }
 
-      .cd-gallery li{
-        transition: all 300ms!important;
-      }
  }
 
 .noUi-target {

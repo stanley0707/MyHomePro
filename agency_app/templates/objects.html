@@ -69,7 +69,7 @@
 {% endfor %}
 </div>
    </div>
-   <div id="sidebar" class="sticky-menu sidebar-menu is_stuck">
+   <div id="sidebar" class="sticky-menu sidebar-menu">
      <div class="card card-nav-tabs">
       <form class="form-inline ml-auto" type="submit" method="GET" action='{% url "saerch_view" %}'>
         <div class="card-header card-header-info">
@@ -158,19 +158,20 @@
     </div> <!-- cd-tab-filter-wrapper -->
     
     <section class="cd-gallery" id="CategoryContent">
-      {% block contento %}
       <ul class="cd-gallery-price"  id="products">
+        {% block contento %}
         {% block content_сategiries %}
             {% for article in articles %}
                 {% include "object_card.html" %}
             {% endfor %}
         {% endblock content_сategiries %}
+        {% endblock contento %}
         <li class="gap"></li>
         <li class="gap"></li>
         <li class="gap"></li>
       </ul>
       <div class="cd-fail-message">объектов не найдено</div>
-      {% endblock contento %}
+      
     </section> <!-- cd-gallery -->
     </div>
 

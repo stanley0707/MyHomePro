@@ -25,7 +25,7 @@
     {% block mapscript %}{% endblock mapscript %}
 </head>
 
-<body class="landing-page signup-page sidebar-collapse " style="">
+<body class="landing-page signup-page sidebar-collapse " id="scrollArea">
 
   <main class="cd-main-content">
     <div class="wrapper-content">
@@ -214,9 +214,11 @@
   <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
   
   <script type="text/javascript">
-    $("#sidebar").stick_in_parent();
-
-  </script>
+    $(window).load(function () {
+      $("#sidebar").stick_in_parent();
+      });
+    
+ </script>
   {% block sliderscript %}{% endblock sliderscript %}
   {% block price-filter-script %}{% endblock price-filter-script %}
 
