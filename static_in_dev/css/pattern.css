@@ -1711,8 +1711,14 @@ xcustom form elements
 
   .cd-filter{
     width: 60%!important;
+
   }
 
+      .cd-filter-block li .togglebutton {
+        /* padding: 5px 0px 15px 0px; */
+        float: left;
+        padding: 0;
+      }
  }
 
 .modal-backdrop.show {
@@ -1971,3 +1977,92 @@ xcustom form elements
   margin-bottom: 0!important;
 }
 
+ @media screen and (max-width: 380px){
+      .cd-filter {
+          width: 98%!important;
+      }
+
+      .content{
+        z-index: 0
+      }
+      .line-width{
+        position: center;
+        width: 100%
+      }
+
+      .sticky{
+        position: -webkit-sticky;
+        position: relative;
+        float: left;
+        padding: 20px 5px;
+        top: 20px;
+        width: 100%;
+
+      }
+      .sticky .container {
+        width: 100%;
+        margin: 30px auto 0;
+        padding-left: 2%;
+
+
+      }
+
+      .sticky .slider-wrapper {
+        position: relative;
+        margin-bottom: 1%;
+        border-radius: 2px;
+        width: 100%;
+        height: 130vw;
+        background: #FFF;
+        border: 5px solid #fff;
+        overflow: hidden;
+             box-shadow: 
+            0 1px 3px rgba(0,0,0, 0.12),
+            0 1px 2px rgba(0,0,0, 0.24);
+      }
+
+       .sticky .slider-wrapper li {
+        display: none;
+      }
+
+      .sticky .slider-wrapper .current-slide {
+        display: block;
+      }
+
+
+
+      .sticky .slider-wrapper .addvert {
+        position: absolute;
+        width:-webkit-fill-available!important;
+        height: auto;
+        top: 0;
+        left: 0;
+      }
+
+      .sticky .addvert_obj{
+        height: 100%!important;
+      }
+
+      .card-footer-obj h1 {
+          color: #5BC73F;
+          float: right;
+          font-size: 1.2em;
+          font-weight: 900;
+          margin-bottom: 0!important;
+          margin-top: 0!important;
+      }
+      
+      .card-footer-obj h1 img {
+          height: 1em;
+      }
+
+      .card .card-body, .card .card-footer {
+          padding: 1.5rem 1.175rem;
+      }
+
+      .btn {
+        padding: 10px 10px;
+        margin: 0.125rem 1px;
+        font-weight: 600;
+      }
+ }

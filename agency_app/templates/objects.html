@@ -10,7 +10,7 @@
         {% for add in main_media %}
         
         <li class="current-slide">
-          <img src="{{ add.adimage.url }}" title="" alt="">
+          <img class="addvert" src="{{ add.adimage.url }}" title="" alt="">
         </li>
         {% endfor %}
         {% for add in articles %}
@@ -18,7 +18,7 @@
             <li class="current-slide">
               <a href="{{ add.get_absolute_url }}">
 
-              <img src="{{ add.image.url }}" title="{{ add.title }}" alt=""><div style="width: 100%; height: 100%; background-color: #222; opacity: 0.3; position: absolute; right: 0%"></div>
+              <img class="addvert_obj" src="{{ add.image.url }}" title="{{ add.title }}" alt=""><div style="width: 100%; height: 100%; background-color: #222; opacity: 0.3; position: absolute; right: 0%"></div>
               <div class="card-img-overlay">
               <h1 style="color: #fff; font-size: 1.3em; font-weight: 800">{{ add.title }}</h1>
               <h1 style="color: #fff; font-size: 1em; font-weight: 800">{{ add.city }}</h1>
@@ -85,7 +85,7 @@
 
           <ul class="cd-filter-content cd-filters list">
             <li class="price-slider" >
-<input type="text" id="amount" class="price-input"/>
+      <input type="text" id="amount" class="price-input"/>
           
           <div id="slider-range">
             
