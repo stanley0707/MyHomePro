@@ -1,6 +1,15 @@
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
 @import 'https://fonts.googleapis.com/css?family=Roboto:700,400';
 
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: rgba(255, 255, 255, 0.0);
+  }
+
+  ::-webkit-scrollbar:horizontal{
+    height: 0px;
+    background: rgba(255, 255, 255, 0.0);
+  }
 .wrapper-content{
   position: relative;
   margin-left: auto;
@@ -1523,10 +1532,8 @@ xfilter
   width: 60px;
   /* image replacement */
   overflow: hidden;
-  text-indent: 100%;
   color: transparent;
   white-space: nowrap;
-  background: transparent url("../img/cd-icon-filter.svg") no-repeat center center;
   z-index: 3;
 }
 .cd-filter-trigger.filter-is-visible {
@@ -1999,7 +2006,7 @@ xcustom form elements
           width: 98%!important;
       }
       .add{
-        display: inherit;
+        display: inherit!important;
       }
       .content{
         z-index: 0
@@ -2013,7 +2020,7 @@ xcustom form elements
         position: -webkit-sticky;
         position: relative;
         float: left;
-        padding: 20px 5px;
+        padding: 3px 1.2% 10px!important;
         top: 20px;
         width: 100%;
 
@@ -2117,6 +2124,10 @@ xcustom form elements
 
       .cd-filter-block li {
           padding: 8px 10px 33px;
+      }
+
+      .cd-tab-filter-wrapper {
+          height: 50px;
       }
 
  }
