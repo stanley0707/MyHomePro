@@ -1358,6 +1358,7 @@ xgallery
 }
 .cd-gallery .card {
   border: 0;
+  position: static;
   margin-top: 10px;
   border-radius: 6px;
   color: rgba(0, 0, 0, 0.87);
@@ -1997,7 +1998,9 @@ xcustom form elements
       .cd-filter {
           width: 98%!important;
       }
-
+      .add{
+        display: inherit;
+      }
       .content{
         z-index: 0
       }
@@ -2110,6 +2113,10 @@ xcustom form elements
 
       .cd-filter form {
           padding: 70px 10px;
+      }
+
+      .cd-filter-block li {
+          padding: 8px 10px 33px;
       }
 
  }

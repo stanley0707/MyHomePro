@@ -16303,7 +16303,7 @@ footer .pull-center {
 }
 
 .card .card-header-info {
-  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(0, 188, 212, 0.6);
+  box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.2), 0 6px 6px -4px rgba(0, 188, 212, 0.6);
 }
 
 .card .card-header-success {
