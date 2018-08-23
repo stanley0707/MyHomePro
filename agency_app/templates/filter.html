@@ -11,6 +11,7 @@
 
           <ul class="cd-filter-content cd-filters list">
             <h4> опции </h4>
+
             <li>
               <div class="togglebutton">
               <label>
@@ -28,16 +29,42 @@
               </label>
             </div>
             </li>
-            <li>
+          </ul> <!-- cd-filter-content -->
+        </div> <!-- cd-filter-block -->
+
+        <div class="cd-filter-block" style="width: 100%;">
+          <h4 class="text-li-article"> категории </h4>
+
+          <ul class="cd-filter-content cd-filters list" style="width: 100%;">
+             {% for cat in categories %}
+             <li>
               <div class="togglebutton">
               <label>
-                    <input class="filter" data-filter=".tagstock" type="checkbox" id="checkbox1">
-                    <span class="toggle" for="tagstock"></span> популярное
+                    <input class="filter"  data-filter=".{{ cat.slug }}" type="checkbox" id="checkbox1">
+                    <span class="toggle" for="{{ cat.slug }}"></span>{{ cat }}
               </label>
             </div>
             </li>
+               {% endfor %}
           </ul> <!-- cd-filter-content -->
-        </div> <!-- cd-filter-block -->
+        </div>
+
+        <div class="cd-filter-block" style="width: 100%;">
+          <h4 class="text-li-article"> назначение </h4>
+
+          <ul class="cd-filter-content cd-filters list" style="width: 100%;">
+             {% for appoint in appointment %}
+             <li>
+              <div class="togglebutton">
+              <label>
+                    <input class="filter"  data-filter=".{{ appoint.slug }}" type="checkbox" id="checkbox1">
+                    <span class="toggle" for="{{ appoint.slug }}"></span>{{ appoint }}
+              </label>
+            </div>
+            </li>
+               {% endfor %}
+          </ul> <!-- cd-filter-content -->
+        </div> 
 
         <div class="cd-filter-block" style="width: 100%;">
           <h4> города </h4>
@@ -60,5 +87,5 @@
       <a href="#0" class="cd-close"><i class="material-icons">radio_button_unchecked</i></a>
     </div> <!-- cd-filter -->
 
-    <a href="#0" class="cd-filter-trigger"><i class="material-icons" style="color:#333;">radio_button_checked</i></a>
+    <a href="#0" class="cd-filter-trigger"><i class="material-icons" >radio_button_checked</i></a>
 

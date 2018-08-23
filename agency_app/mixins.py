@@ -10,7 +10,7 @@ class CategoryListMixin(MultipleObjectMixin):
         context['categories'] = Category.objects.all()
         return context
 
-class CategoryListMixin(MultipleObjectMixin):
+class PageListMixin(MultipleObjectMixin):
     def get_context_data(self, *args, **kwargs):
         context = {}
         context['pages'] = Pages.objects.all()

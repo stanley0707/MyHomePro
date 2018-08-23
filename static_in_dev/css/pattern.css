@@ -3,11 +3,13 @@
 
   ::-webkit-scrollbar {
     width: 0px;
+    height: 0px;
     background: rgba(255, 255, 255, 0.0);
   }
 
   ::-webkit-scrollbar:horizontal{
     height: 0px;
+    width: 0px;
     background: rgba(255, 255, 255, 0.0);
   }
 .wrapper-content{
@@ -1115,7 +1117,6 @@ position: relative;
     display: inline-block;
     font-weight: 400;
     padding: 7px 74px;
-    width: 100%;
 }
 
 .card-major {
@@ -1182,6 +1183,7 @@ Main Components
 .cd-main-content.is-fixed .cd-filter {
   position: fixed;
   overflow: hidden;
+  z-index: 4;
 }
 .cd-main-content.is-fixed .cd-filter form {
   height: 100vh;
@@ -1199,7 +1201,7 @@ xtab-filter
   background-color: #ffffff;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0,0, 0.2);
   z-index: 1;
-  height: 60px;
+  height: 50px;
 }
 .cd-tab-filter-wrapper:after {
   content: "";
@@ -1345,6 +1347,7 @@ xgallery
 -------------------------------- */
 .content{
   display: flex;
+  margin: 0 auto;
 }
 
 .cd-gallery{
@@ -1470,7 +1473,8 @@ xfilter
   left: 0;
   height: 50px;
   width: 100%;
-  background-color: #41307c;
+  border-bottom: 0.1px solid #999;
+  background-color: #ffffff;
   z-index: 2;
 }
 
@@ -1490,19 +1494,18 @@ xfilter
   height: 50px;
   line-height: 50px;
   width: 60px;
-  color: #ffffff;
   font-size: 1.3rem;
   text-align: center;
-  background: #37296a;
+  background: #ffffff;
+  border-bottom: 0.1px solid #999;
+  color: #00bcd4;
   opacity: 0;
   -webkit-transition: opacity 0.2s;
   -moz-transition: opacity 0.2s;
   transition: opacity 0.2s;
   z-index: 3;
 }
-.no-touch .cd-filter .cd-close:hover {
-  background: #32255f;
-}
+
 .cd-filter.filter-is-visible {
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
@@ -1580,7 +1583,7 @@ xcustom form elements
 
 .cd-filter-block li{
   width: 100%;
-  padding: 8px 33px 33px ;
+  padding: 8px 0px 33px 33px ;
   border-bottom: #f1f1f1 1px solid;
   height: 30px; 
   margin-left: 0 auto;
@@ -2001,9 +2004,27 @@ xcustom form elements
     width: 60px;
 }
 
- @media screen and (max-width: 380px){
+
+.cd-filter-trigger{
+  color: #00bcd4;
+}
+
+.cd-filter-trigger .material-icons{
+  padding: 20%;
+
+}
+
+.cd-filter  .btn.btn-fab, .cd-filter .btn.btn-just-icon {
+  left: 8%;
+}
+
+.cd-filters .price-slider {
+    width: 90%;
+}
+
+@media screen and (max-width: 380px){
       .cd-filter {
-          width: 98%!important;
+          width: 100%!important;
       }
       .add{
         display: inherit!important;
@@ -2088,8 +2109,7 @@ xcustom form elements
       }
 
       .card-agent-name {
-          padding-left: 50px;
-          padding-top: 0;
+          padding: 0px 0px 0px 50px!important;
       }
       .card-major {
           padding: 20px 4px;
@@ -2129,5 +2149,4 @@ xcustom form elements
       .cd-tab-filter-wrapper {
           height: 50px;
       }
-
  }

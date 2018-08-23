@@ -66,7 +66,7 @@ class ObjectListView(ListView):
 
 
 
-class CategoryListView(ListView):
+class CategoryListView(ListView, CategoryListMixin):
 	model = Category
 	template_name = 'index.html'
 	

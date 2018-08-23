@@ -43,7 +43,6 @@
                 <div class="card-body">
                         {{ q.quest }}
                 </div>
-                
         </button>
 
 
@@ -130,6 +129,23 @@
                {% endfor %}
           </ul> <!-- cd-filter-content -->
         </div> <!-- cd-filter-block -->
+
+        <div class="cd-filter-block" style="width: 100%;">
+          <h4 class="text-li-article"> категории </h4>
+
+          <ul class="cd-filter-content cd-filters list" style="width: 100%;">
+             {% for cat in categories %}
+             <li>
+              <div class="togglebutton">
+              <label>
+                    <input class="filter"  data-filter=".{{ cat.slug }}" type="checkbox" id="checkbox1">
+                    <span class="toggle" for="{{ cat.slug }}"></span>{{ cat.name }}
+              </label>
+            </div>
+            </li>
+               {% endfor %}
+          </ul> <!-- cd-filter-content -->
+        </div>
 
         <div class="cd-filter-block" style="width: 100%;">
           <h4 class="text-li-article"> города </h4>
