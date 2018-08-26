@@ -1,29 +1,16 @@
 {% load static %}
 <li class="mix mix-price selected_obj {{ article.city.slug }} {{ article.category.slug }} {{ article.price }} {{ article.stok.tag }} {{ article.appointment.slug }} {% if article.status %} interest {% endif %}" id="mixit" data-price="{{ article.price }}" >
 <div class="card mb-3 line_card card-nav-tabs">
-    <div class="img-container">
-     
-    <div class="card-img-overlay prop_img">
+    <div class="img-container" style="background-image: url('{{ article.image.url }}'); background-repeat: no-repeat; background-size: cover; height: 300px">
+     <div style="padding: 12px; float: right!important;" class="cd-filter-block">
     {% if article.stok %}
-
-<span type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{{ article.stok }}">
-  акция
-</span>
+<a href="#" type="button" data-container="body" data-toggle="popover"  class="badge badge-info" data-placement="bottom" data-content="{{ article.stok }}"># акция</a>
     {% endif %}
-    <span class="badge badge-primary card_info_obj" style=" float: right!important;
-  background-color:#fff!important;
-  color:#555 !important;
-  margin:  7px !important; ">{{ article.city }}</span>
-    <span class="badge badge-primary card_info_obj" style=" float: right!important;
-  background-color:#fff!important;
-  color:#555 !important;
-  margin: 7px !important; ">{{ article.category }}</span>
-  <span class="badge badge-primary card_info_obj" style=" float: right!important;
-  background-color:#fff!important;
-  color:#555 !important;
-  margin: 7px !important; "> id: {{ article.id_prop }}</span>
+   <a href="#" id="{{ article.category.slug }}" class="badge badge-info"># {{ article.category }}</a>
+   <a href="#" id="{{ article.city.slug }}" class="badge badge-info"># {{ article.city  }}</a>
+   <a href="#" id="{{ article.appointment.slug }}" class="badge badge-info"># {{ article.appointment  }}</a>
+   <a href="{{ article.get_absolute_url }}" class="badge badge-info">id: {{ article.id_prop }}</a>
     </div>
-    <img class="card-img-top " src="{{ article.image.url }}" alt="Card image cap">
     </div>
   <div class="card-body">
     <div class="aget-info">
@@ -43,3 +30,4 @@
   </div>
 </div>
 </li>
+

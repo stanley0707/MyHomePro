@@ -4662,7 +4662,7 @@ tbody.collapse.show {
 }
 
 .card-img-overlay {
-  position: absolute;
+  position: relative!important;
   top: 0;
   right: 0;
   bottom: 0;
@@ -5376,7 +5376,7 @@ button.close {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: 0.25rem;
+  border-radius: 1rem;
 }
 
 .badge:empty {
@@ -5437,9 +5437,9 @@ button.close {
 
 .badge-info[href]:hover,
 .badge-info[href]:focus {
-  color: #ffffff;
+  color: #333;
   text-decoration: none;
-  background-color: #008fa1;
+  background-color: #efefef;
 }
 
 .badge-warning {
@@ -10922,12 +10922,12 @@ legend {
 }
 
 a {
-  color: #9c27b0;
+  color: #0097a7;
 }
 
 a:hover,
 a:focus {
-  color: #89229b;
+  color: #26c6da;
   text-decoration: none;
 }
 
@@ -13788,9 +13788,9 @@ textarea {
 }
 
 .navbar-nav .nav-link {
-  padding: 0.5321rem;
+  padding: 0.1rem;
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .nav-tabs,
@@ -14089,10 +14089,11 @@ textarea {
 }
 
 .badge {
-  padding: 5px 12px;
-  text-transform: uppercase;
-  font-size: 10px;
-  color: #fff;
+  padding: 5px 8px;
+  /* text-transform: uppercase; */
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #333;
 }
 
 .badge.badge-primary {
@@ -14100,7 +14101,7 @@ textarea {
 }
 
 .badge.badge-info {
-  background-color: #00bcd4;
+  background-color: #ffffff;
 }
 
 .badge.badge-success {
@@ -14135,7 +14136,8 @@ textarea {
 
 .badge-info[href]:hover,
 .badge-info[href]:focus {
-  background-color: #00a5bb;
+  background-color: #efefef;
+  /* padding:  5px; */
 }
 
 .badge-success[href]:hover,
@@ -15799,6 +15801,7 @@ h2.title {
 .togglebutton label {
   cursor: pointer;
   color: rgba(0, 0, 0, 0.26);
+  height: 14px;
 }
 
 .form-group.is-focused .togglebutton label {
@@ -16303,7 +16306,7 @@ footer .pull-center {
 }
 
 .card .card-header-info {
-  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(0, 188, 212, 0.6);
+  box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.2), 0 6px 6px -4px rgba(0, 188, 212, 0.6);
 }
 
 .card .card-header-success {

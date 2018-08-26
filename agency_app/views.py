@@ -10,7 +10,7 @@ from agency_app.models import (
 		Advertising,
 		City,
 		Qeustions,
-		Appointement
+		Appointement,
 	)
 
 from django.forms import modelformset_factory
@@ -189,8 +189,3 @@ class Searcher(View):
 		}
 		
 		return render(self.request, self.template, context)
-
-
-
-
-

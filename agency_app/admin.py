@@ -10,7 +10,7 @@ from agency_app.models import(
         Advertising,
         City,
         Qeustions,
-        Appointement
+        Appointement,
     )
 
 
@@ -64,3 +64,4 @@ admin.site.register(Agent, AgentAdmin)
 admin.site.register(PartnerStok, PartnerStokAdmin)
 admin.site.register(Qeustions, QeustionsAdmin)
 admin.site.register(Appointement, AppointementAdmin)
+

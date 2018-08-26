@@ -106,7 +106,7 @@
             <li>
               <div class="togglebutton">
               <label>
-                    <input class="filter" data-filter=".tagstock" type="checkbox" id="checkbox1">
+                    <input class="filter" data-filter=".tagstock" type="checkbox" id="fil{{ tagstock }}">
                     <span class="toggle" for="tagstock"></span> акции 
               </label>
             </div>
@@ -121,7 +121,7 @@
              <li>
               <div class="togglebutton">
               <label>
-                    <input class="filter"  data-filter=".{{ appoint.slug }}" type="checkbox" id="checkbox1">
+                    <input class="filter"  data-filter=".{{ appoint.slug }}" type="checkbox" id="fil{{ appoint.slug }}">
                     <span class="toggle" for="{{ appoint.slug }}"></span>{{ appoint }}
               </label>
             </div>
@@ -138,7 +138,7 @@
              <li>
               <div class="togglebutton">
               <label>
-                    <input class="filter"  data-filter=".{{ cat.slug }}" type="checkbox" id="checkbox1">
+                    <input class="filter"  data-filter=".{{ cat.slug }}" type="checkbox" id="fil{{ cat.slug }}">
                     <span class="toggle" for="{{ cat.slug }}"></span>{{ cat.name }}
               </label>
             </div>
@@ -155,7 +155,7 @@
              <li>
               <div class="togglebutton">
               <label>
-                    <input class="filter"  data-filter=".{{ city.slug }}" type="checkbox" id="checkbox1">
+                    <input class="filter"  data-filter=".{{ city.slug }}" type="checkbox" id="fil{{ city.slug }}">
                     <span class="toggle" for="{{ city.slug }}"></span>{{ city }}
               </label>
             </div>
@@ -213,8 +213,9 @@
 
 
  {% endblock content %}
+
  {% block sliderscript %}
- <script type="text/javascript">
+  <script type="text/javascript">
 $(function() {
   /** -----------------------------------------
    * Modulo del Slider 
@@ -316,9 +317,10 @@ $(function() {
 
 });
   </script>
-  {% endblock sliderscript %}
-  {% block price-filter-script %}
-        <script type="text/javascript">
+{% endblock sliderscript %}
+
+{% block price-filter-script %}
+  <script type="text/javascript">
   var convertPrice = function(value){
      return parseFloat(value.replace('$',''));
 }
@@ -368,3 +370,25 @@ $(function() {
     });
     </script>
   {% endblock price-filter-script %}
+  {% block script_touch %} 
+  <script type="text/javascript">
+     {% for cat in categories %}
+       $('#{{ cat.slug }}').click(function(e){
+            e.preventDefault();
+            $('#fil{{ cat.slug }}').trigger('click');
+        });
+     {% endfor %}
+     {% for appoint in appointment %}
+        $('#{{ appoint.slug }}').click(function(e){
+            e.preventDefault();
+            $('#fil{{ appoint.slug }}').trigger('click');
+        });
+     {% endfor %}
+     {% for city in cities %}
+        $('#{{ city.slug }}').click(function(e){
+            e.preventDefault();
+            $('#fil{{ city.slug }}').trigger('click');
+        });
+      {% endfor %}
+   </script>
+  {% endblock script_touch %}

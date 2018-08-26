@@ -1,10 +1,22 @@
 {% extends "suit/error_base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans 'Server Error' %}{% endblock %}
-
 {% block error %}{% trans 'error'|capfirst %} 500{% endblock %}
 
 {% block content %}
-  {% trans "There's been an error. It's been reported to the site administrators via e-mail and should be fixed shortly. Thanks for your patience." %}
+  <div class="page-container">
+  
+  <div class="info">
+    <div class="cloud-image">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/18041/sad-cloud.png" />
+    </div>
+    <div class="text">
+      <h1>Что-то произошло</h1>
+      <h3>техническая ошибка (500 error).<br>
+      </h3>
+      <p>Приносим извинение за техническую неполадку! Вы можете <a href="mailto:">сообщить нам об ошибке</a>. Спасибо</p>
+    </div>
+  </div>
+  
+</div>
 {% endblock %}
