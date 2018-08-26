@@ -10,7 +10,7 @@
           <div class="cd-filter-block">
 
           <ul class="cd-filter-content cd-filters list">
-            <h4> опции </h4>
+            <h4 class="text-li-article">  опции </h4>
 
             <li>
               <div class="togglebutton">
@@ -41,7 +41,7 @@
               <div class="togglebutton">
               <label>
                     <input class="filter"  data-filter=".{{ cat.slug }}" type="checkbox" id="checkbox1">
-                    <span class="toggle" for="{{ cat.slug }}"></span>{{ cat }}
+                    <span class="toggle" for="{{ cat.slug }}"></span><p>{{ cat }}</p>
               </label>
             </div>
             </li>
@@ -58,7 +58,7 @@
               <div class="togglebutton">
               <label>
                     <input class="filter"  data-filter=".{{ appoint.slug }}" type="checkbox" id="checkbox1">
-                    <span class="toggle" for="{{ appoint.slug }}"></span>{{ appoint }}
+                    <span class="toggle" for="{{ appoint.slug }}"></span><p>{{ appoint }}</p>
               </label>
             </div>
             </li>
@@ -67,7 +67,7 @@
         </div> 
 
         <div class="cd-filter-block" style="width: 100%;">
-          <h4> города </h4>
+          <h4 class="text-li-article">  города </h4>
 
           <ul class="cd-filter-content cd-filters list" style="width: 100%;">
              {% for city in cities %}
@@ -75,7 +75,7 @@
               <div class="togglebutton">
               <label>
                     <input class="filter"  data-filter=".{{ city.slug }}" type="checkbox" id="checkbox1">
-                    <span class="toggle" for="{{ city.slug }}"></span>{{ city }}
+                    <span class="toggle" for="{{ city.slug }}"></span><p>{{ city }}</p>
               </label>
             </div>
             </li>

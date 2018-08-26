@@ -19,7 +19,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class PropImagesAdminInline(admin.TabularInline):
     model = Images
-    extra = 10
+    extra = 2
 
 class CityProp(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}

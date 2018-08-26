@@ -1,0 +1,28 @@
+{% extends "admin/base.html" %}
+{% block contento %}
+
+<div class="results">
+        <table id="result_list" class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+            <tr>
+                <th scope="col" class="action-checkbox-column">
+                    <div class="text"><span><input type="checkbox" id="action-toggle" style="display: inline-block;"></span>
+                        </div>
+                    </th>
+                    <th scope="col" class="__str__-column column-__str__">
+                        
+                        <div class="text"><span> объектов найдено: {{ found_obj.count }} </span>
+                        </div>
+                    </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in found_obj %}
+              <tr class="row1">
+                    <td class="action-checkbox"><input type="checkbox" name="_selected_action" value="5" class="action-select"></td><th class="field-__str__"><a href="/admin/agency_app/property/{{ object.id }}/change/">Объект: {{ object.id_prop}}, г. {{ object.city }}, ул. {{ object.street }}, д. {{ object.hnum }} собственник: {{ object.saler }} ({{ object.salerphone }})</a></th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock contento %}

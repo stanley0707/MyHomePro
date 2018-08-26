@@ -12,6 +12,18 @@
     width: 0px;
     background: rgba(255, 255, 255, 0.0);
   }
+
+#preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  background: #ffffff url('//cdnjs.cloudflare.com/ajax/libs/file-uploader/3.7.0/processing.gif') no-repeat center center;
+}
+
 .wrapper-content{
   position: relative;
   margin-left: auto;
@@ -1214,7 +1226,8 @@ xtab-filter
   position: relative;
   height: 50px;
   width: 140px;
-  margin: 0 auto;
+  float: right;
+  padding-right: 3%;
   z-index: 1;
 }
 .cd-tab-filter::after {
@@ -1329,7 +1342,7 @@ xtab-filter
 @media only screen and (min-width: 1170px) {
   .cd-tab-filter {
     /* tabbed navigation on big devices */
-    width: 100%;
+    width: 13%;
     float: right;
     margin: 0;
     -webkit-transition: width 0.1s;
@@ -1728,9 +1741,15 @@ xcustom form elements
   }
 
   .cd-filter{
-    width: 60%!important;
+    width: 80%!important;
+
 
   }
+
+  .cd-filter-block li .togglebutton label {
+        width: auto;
+        display: -webkit-inline-box;
+    }
 
       .cd-filter-block li .togglebutton {
         /* padding: 5px 0px 15px 0px; */
@@ -2149,4 +2168,9 @@ xcustom form elements
       .cd-tab-filter-wrapper {
           height: 50px;
       }
+
+      .cd-filter-block li .togglebutton label {
+        width: auto;
+        display: -webkit-inline-box;
+    }
  }

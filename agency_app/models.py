@@ -10,11 +10,12 @@ def generate_icon(instance, filename):
     filename = instance.slug + '.svg'
     return '{}'.format(filename)
 
-# images generator
+
 def generate_filename(instance, filename):
     
     filename = instance.slug + '.jpg'
-    return '{}'.format(instance.slug) + "/" + '{}'.format(filename)
+    return '{}'.format(instance.id_prop) + "/" + '{}'.format(filename)
+
 
 # images generator
 def generate_add_dir(instance, filename):
@@ -22,8 +23,14 @@ def generate_add_dir(instance, filename):
 
 
 def prop_id_generate():
-    return  ''.join([random.choice(list('1234567890')) for x in range(5)])
+    id_prop = ''.join([random.choice(list('1234567890')) for x in range(5)])
+    return id_prop
 
+add_id_prop = prop_id_generate()
+
+
+def dir_images(instance, filename):
+    return '{}'.format(instance.dir_img) + "/" + '{}'.format(filename)
 
 class Advertising(models.Model):
 
@@ -78,8 +85,8 @@ class Category(models.Model):
 
 class Property(models.Model):
     """ property object class """
-    
-    id_prop  = models.CharField(max_length=150, verbose_name=u'id объекта', default=prop_id_generate, blank=True, null=True)
+
+    id_prop  = models.CharField(max_length=150, verbose_name=u'id объекта/папки', default=add_id_prop, blank=True, null=True)
     category = models.ForeignKey(Category, verbose_name=u'категоря')
     stok     = models.ForeignKey('PartnerStok', verbose_name=u'акция', on_delete=models.PROTECT, blank=True, null=True)
     agent    = models.ForeignKey('Agent', verbose_name=u'агент', on_delete=models.PROTECT)
@@ -117,6 +124,7 @@ class Property(models.Model):
         verbose_name = 'объект'
         verbose_name_plural = 'объекты'
 
+
 class City(models.Model):
     name     = models.CharField(max_length=50, verbose_name=u'город', blank=True)
     slug     = models.SlugField()
@@ -131,8 +139,8 @@ class City(models.Model):
 class Images(models.Model):
     """ images class """
     album    = models.ForeignKey(Property)
-    images   = models.ImageField(upload_to=generate_filename, verbose_name=u'изображеня', blank=True, null=True)
-    slug     = models.SlugField(unique = True, default='')
+    images   = models.ImageField(upload_to=dir_images, verbose_name=u'изображеня', blank=True, null=True)
+    dir_img  = models.CharField(max_length=50, default=add_id_prop, verbose_name=u'название папки')
     
     def __str__(self):
         return "Объект:{}, категория: {}".format(

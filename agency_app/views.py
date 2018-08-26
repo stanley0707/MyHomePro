@@ -61,9 +61,9 @@ class ObjectListView(ListView):
 		context['main_media'] = Advertising.objects.all()
 		context['question'] = Qeustions.objects.all()
 		context['appointment'] = Appointement.objects.all()
+
 		
 		return context
-
 
 
 class CategoryListView(ListView, CategoryListMixin):
@@ -179,6 +179,7 @@ class Searcher(View):
 		print(num)
 		context = {
 			'articles': (found_obj),
+			'categories': Category.objects.all(),
 			'qu': (query),
 			'word': num,
 			'main_media': Advertising.objects.all(),
