@@ -156,6 +156,7 @@ class DynamicPageImage(View):
 
 
 class Query_Selector:
+	
 	def __init__(self, query):
 		self.query = query
 
@@ -208,17 +209,21 @@ class Query_Selector:
 
 
 class Searcher(View):
+
+	template = "search.html"
+	
 	def __init__(self):
 		self.found_obj = []
 		self.query = ''	
-	template = "search.html"
-
+	
 
 	def get(self, request, *args, **kwargs):
+		
 		query = self.request.GET.get('q')
-		res = query
+		res = query #  res - вывод обратно юзеру
 		data = Query_Selector.queries_to_json(query)
 		e = Query_Selector.query_replace(query)
+		print(query)
 		
 		# регистронезависимый поиск одного слова
 		query_set = [
@@ -226,6 +231,7 @@ class Searcher(View):
 			[''.join(query.lower())],
 			[''.join(query.title())]
 		]
+		
 		
 		# регистронезависимый поиск более чем одного слова
 		if len(query.title().split()) > 1:
@@ -238,8 +244,15 @@ class Searcher(View):
 				[query.title()]
 			]
 		
+		print(query_set)
+		i = 0
 		for query_s in query_set: # цикл экземпляров списке вариантов регистра
+			print(query_s)
 			for q in query_s: # список слов в запросе в цикле! = q
+				i += 1
+				print(q)
+				print(i)
+				print(len(query_set))
 				q = '' if len(q) == 1 else q # запрос правда, если в нем более одного символа иначе он пустая строка!
 				found_obj_query = Property.objects.filter(
 					Q(id_prop__icontains=q)|
@@ -260,7 +273,7 @@ class Searcher(View):
 				
 				if found_obj_query:
 					self.found_obj = found_obj_query
-				else:
+				elif(i == len(query_set) and found_obj_query == 0):
 					query_s.append(e)
 						
 
@@ -280,6 +293,3 @@ class Searcher(View):
 		}
 		
 		return render(self.request, self.template, context)
-
-
-

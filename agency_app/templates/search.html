@@ -6,14 +6,6 @@
             <h6>По запросу <a href="https://www.google.com/search?q={{ qu }}">{{ qu }}</a> найдено: {{ articles.count }} {{ word }} </h6>
     </div>
 </div>
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <div class="card-body">
-            <h6>По запросу <a href="https://www.google.com/search?q={{ qu }}">{{ qu }}</a> найдено: {{ articles.count }} {{ word }} </h6>
-            </div>
-   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
 {% endblock card %}
 {% block contento %}
     {% for article in articles %}

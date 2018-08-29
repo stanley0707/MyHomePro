@@ -195,6 +195,14 @@
     {% block card %}
     {% endblock card %}
       <ul class="cd-gallery-price"  id="products">
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <div class="card-body">
+                      <h6>Вы можете воспользоваться удобным поисковиком или выставить необходимые вам параметры в панели слева.</h6>
+                      </div>
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
         {% block contento %}
         {% block content_сategiries %}
             {% for article in articles %}
