@@ -1127,12 +1127,11 @@ position: relative;
 .card-agent-name {
     position: absolute;
     display: inline-block;
-    font-weight: 400;
-    padding: 7px 74px;
+    font-weight: 600;
+    padding: 7px 72px 0px;
 }
 
 .card-major {
-    position: relative;
     float: right;
     padding: 26px 20px;
     display: inline-block;

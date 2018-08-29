@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -142,6 +143,8 @@ class PagesDetailView(DetailView, CategoryListMixin):
 		return context
 
 
+
+
 class DynamicPageImage(View):
 	def get(self, request, *args, **kwargs):
 		page_id = request.GET.get('page_id')
@@ -152,35 +155,123 @@ class DynamicPageImage(View):
 		return JsonResponse(data)
 
 
+class Query_Selector:
+	def __init__(self, query):
+		self.query = query
+
+
+	@staticmethod
+	def queries_to_json(query):
+		memory = open('agency_app/memory.json', 'w')
+		
+		data = []
+		
+		for i in City.objects.all():
+			data.append(i.name)
+
+
+		value = [(
+			value[0:-1] + 'и',
+			value[0:-1] + 'ей',
+			value[0:-1] + 'ой',
+			value[0:-1] + 'ю',
+			value[0:-1] + 'е',
+			value[0:-1] + 'ах',
+			value[0:-1] + 'ами',
+			value[0:-1] + 'я',
+			value[0:-1] + 'ем',
+			value[0:-1] + 'ом',
+			value[0:-1] + 'а',
+		) for value in data]
+
+		data = dict(zip(data, value))
+		
+		json.dump(data, memory, indent=4, ensure_ascii=False)
+
+		return data
+
+	@classmethod
+	def query_replace(cls, query):
+		memory = open('agency_app/memory.json', 'r')
+		memory = json.loads(memory.read())
+		
+		t = query.title().split()
+		for t in t:
+			d = []
+			d.append(t)
+
+		item = dict(memory.items())
+		
+		for element in item.keys():
+			if set(item[element]) & set(d):
+				return element
+
+
 class Searcher(View):
-	
+	def __init__(self):
+		self.found_obj = []
+		self.query = ''	
 	template = "search.html"
-	
+
+
 	def get(self, request, *args, **kwargs):
 		query = self.request.GET.get('q')
-		query = query.title().split()
-		for query in query:
-			found_obj = Property.objects.filter(
-							Q(id_prop__icontains=query)| # blank True null True
-							Q(category__name__icontains=query)|    #
-							Q(agent__first_name__icontains=query)| #
-							Q(agent__last_name__icontains=query)|  #
-							Q(city__name__iexact=query)|
-							Q(street__iexact=query)| 
-							Q(hnum__icontains=query)|
-							Q(title__icontains=query)| #
-							Q(saler__icontains=query) # blank True
-							
-									 
-						)
+		res = query
+		data = Query_Selector.queries_to_json(query)
+		e = Query_Selector.query_replace(query)
 		
-		num = len([i for i in found_obj])
+		# регистронезависимый поиск одного слова
+		query_set = [
+			[''.join(query.upper())],
+			[''.join(query.lower())],
+			[''.join(query.title())]
+		]
+		
+		# регистронезависимый поиск более чем одного слова
+		if len(query.title().split()) > 1:
+			query_set = [
+				query.upper().split(),
+				query.lower().split(),
+				query.title().split(),
+				[query.upper()],
+				[query.lower()],
+				[query.title()]
+			]
+		
+		for query_s in query_set: # цикл экземпляров списке вариантов регистра
+			for q in query_s: # список слов в запросе в цикле! = q
+				q = '' if len(q) == 1 else q # запрос правда, если в нем более одного символа иначе он пустая строка!
+				found_obj_query = Property.objects.filter(
+					Q(id_prop__icontains=q)|
+					Q(category__name__icontains=q)|
+					Q(appointment__appointment__icontains=q)|
+					Q(agent__first_name__icontains=q)|
+					Q(agent__last_name__icontains=q)|
+					Q(city__name__iexact=q)|
+					Q(street__iexact=q)| 
+					Q(hnum__icontains=q)|
+					Q(area__icontains=q)|
+					Q(areafield__icontains=q)|
+					Q(flor__icontains=q)|
+					Q(title__icontains=q)|
+					Q(desc__icontains=q)|
+					Q(saler__icontains=q)
+				)
+				
+				if found_obj_query:
+					self.found_obj = found_obj_query
+				else:
+					query_s.append(e)
+						
+
+
+		num = len([i for i in self.found_obj])
 		num = deviation(num)
-		print(num)
+		
 		context = {
-			'articles': (found_obj),
+			'articles': (self.found_obj),
 			'categories': Category.objects.all(),
-			'qu': (query),
+			'qu': (res),
 			'word': num,
 			'main_media': Advertising.objects.all(),
 			'cities': City.objects.all(),
@@ -189,3 +280,6 @@ class Searcher(View):
 		}
 		
 		return render(self.request, self.template, context)
+
+
+
