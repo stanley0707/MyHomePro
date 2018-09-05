@@ -162,8 +162,9 @@ class DynamicPageImage(View):
 
 class Query_Selector:
 	
-	def __init__(self, query):
-		self.query = query
+	def __init__(self, found_obj_query, query_set):
+		self.found_obj_query = found_obj_query
+		self.query_set = query_set
 
 	
 	def __writer(key, value):
@@ -182,6 +183,7 @@ class Query_Selector:
 			if set(memory[element]).intersection(set(query_set)):
 				pass
 
+	
 	def __item_to_json():
 		memory = open('agency_app/memory.json', 'w')
 		
@@ -273,7 +275,7 @@ class Query_Selector:
 
 		return ' '.join(query_out)
 		
-		
+	#@staticmethod	
 	def query_out(found_obj_query, query_set):
 		found_obj = []
 		if found_obj_query:
@@ -302,6 +304,7 @@ class Searcher(View):
 	def get(self, request, *args, **kwargs):
 		query = self.request.GET.get('q') 
 		res = query
+		
 		query_set = Query_Selector.query_replace(query)
 			
 		for query_s in query_set.split():
@@ -324,6 +327,7 @@ class Searcher(View):
 				Q(saler__icontains=query_s)
 			
 			)
+		
 		try:
 			if found_obj_query:
 				self.found_obj = Query_Selector.query_out(found_obj_query, query_set)
@@ -331,6 +335,7 @@ class Searcher(View):
 		except UnboundLocalError:
 			self.found_obj = []
 		
+		print(self.found_obj)
 		
 		num = len([i for i in self.found_obj])
 		num = deviation(num)

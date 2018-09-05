@@ -29,7 +29,7 @@
 <div id="preloader"></div>
   <main class="cd-main-content">
     <div class="wrapper-content">
-      <div class="container-content">
+      
     {% block content %}
     <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
     <div class="container">
@@ -155,29 +155,6 @@
           <div class="col-md-8 ml-auto mr-auto">
             <h2 class="text-center title">Work with us</h2>
             <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
-  <form action="/contact/" method="Post">{% csrf_token %}
-    {{ form.non_field_errors }}
-    <div>
-      <label for="id_subject">Тема:</label>
-      {{ form.subject.errors }}
-      {{ form.subject }}
-    </div>
-    <div>
-      <label for="id_sender">E-mail:</label>
-      {{ form.sender.errors }}
-      {{ form.sender }}
-    </div>
-    <div>
-      <label for="id_message">Сообщение:</label>
-      {{ form.message.errors }}
-      {{ form.message }}
-    </div>
-    <div>
-      {{ form.copy.errors }}
-      <label for="id_copy">Отправить копию себе {{ form.copy }}</label>
-    </div>
-    <input type="submit" value="Отправить"/>
-</form>
           </div>
         </div>
       </div>
@@ -185,7 +162,6 @@
   </div>
   {% endblock contact_form_block %}
   {% endblock content %}
-  </div>
    </div>
  </main>
 

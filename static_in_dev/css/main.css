@@ -1,19 +1,18 @@
-/*!
+@font-face{
 
- =========================================================
- * Material Kit - v2.0.3
- =========================================================
+font-family: 'als_spb-webfont';
 
- * Product Page: https://www.creative-tim.com/product/material-kit
- * Copyright 2018 Creative Tim (http://www.creative-tim.com)
+src: url('../fonts/als_spb-webfont.ttf');
 
- * Designed by www.invisionapp.com Coded by www.creative-tim.com
+src: url('../fonts/als_spb-webfont.ttf?iefix') format('ttf'),
 
- =========================================================
+url('../fonts/als_spb-webfont.woff') format('woff'),
 
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+font-weight: normal;
 
- */
+font-style: normal;
+
+}
 
 .card {
   font-size: .875rem;
@@ -54,7 +53,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "als_spb-webfont",  sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -458,7 +457,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "als_spb-webfont",  sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -929,7 +928,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: als_spb-webfont, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 code {
@@ -5642,7 +5641,7 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "als_spb-webfont", "Helvetica", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5767,7 +5766,7 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "als_spb-webfont", "Helvetica", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -10909,7 +10908,7 @@ legend {
 }
 
 .serif-font {
-  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-family: "als_spb-webfont", serif;
 }
 
 * {
@@ -14538,7 +14537,7 @@ h6,
 .h2,
 .h3,
 .h4 {
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "als_spb-webfont" sans-serif;
   font-weight: 300;
   line-height: 1.5em;
 }
@@ -14629,7 +14628,7 @@ small,
 .footer-big h4,
 .media .media-heading {
   font-weight: 700;
-  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-family: "als_spb-webfont", serif;
 }
 
 .title,
