@@ -32,21 +32,22 @@ from django.views.generic import TemplateView, CreateView, FormView
 def deviation(num):
 
 	description = {
-		1:'объект',
-		2:'объекта',
-		3:'объектов'
+		1:' объект',
+		2:' объекта',
+		3:' объектов'
 	}
 		
 	if num % 10 == 1:
-		d_des = description.get(1)
+		d_des = str(num) + description.get(1)
 		return d_des
+	
 	elif 1 < num  % 10 < 5:
-		d_des = description.get(2)
+		d_des = str(num) + description.get(2)
 		return d_des
+	
 	else:
-		d_des = description.get(3)
+		d_des = str(num) + description.get(3)
 		return d_des
-
 
 class ObjectListView(ListView):
 	model = Property
@@ -155,141 +156,195 @@ class DynamicPageImage(View):
 		return JsonResponse(data)
 
 
+
+
+
+
 class Query_Selector:
 	
 	def __init__(self, query):
 		self.query = query
 
+	
+	def __writer(key, value):
+		memory = open('agency_app/memory.json', 'w')
+		data = dict(zip(key, value))
+		json.dump(data, memory, indent=4, ensure_ascii=False)
 
-	@staticmethod
-	def queries_to_json(query):
+	
+	
+	def __query_to_json(query_set):
+		memory = open('agency_app/memory.json', 'r')
+		memory = json.loads(memory.read())
+		
+		
+		for element in memory.keys():
+			if set(memory[element]).intersection(set(query_set)):
+				pass
+
+	def __item_to_json():
 		memory = open('agency_app/memory.json', 'w')
 		
 		data = []
 		
 		for i in City.objects.all():
-			data.append(i.name)
+			data.append(i.name) # if i.name.split() == 1 else data.append(i.name.split())
 
+		for i in Category.objects.all():
+			data.append(i.name) # if i.name.split() == 1 else data.append(i.name.split())
+		
+		for i in Appointement.objects.all():
+			data.append(i.appointment.lower()) # if i.appointment.split() == 1 else data.append(i.appointment.split())
 
+		for i in Agent.objects.all():
+			data.append(i.first_name)
+
+	
+		
 		value = [(
-			value[0:-1] + 'и',
-			value[0:-1] + 'ей',
-			value[0:-1] + 'ой',
-			value[0:-1] + 'ю',
-			value[0:-1] + 'е',
-			value[0:-1] + 'ах',
-			value[0:-1] + 'ами',
-			value[0:-1] + 'я',
-			value[0:-1] + 'ем',
-			value[0:-1] + 'ом',
-			value[0:-1] + 'а',
+			
+				value[0:-1] + 'а',
+				value[0:-1] + 'ы',
+				value[0:-1] + 'и',
+				value[0:-1] + 'ей',
+				value[0:-1] + 'ой',
+				value[0:-1] + 'ю',
+				value[0:-1] + 'е',
+				value[0:-1] + 'ах',
+				value[0:-1] + 'ами',
+				value[0:-1] + 'я',
+				value[0:-1] + 'ем',
+				value[0:-1] + 'ом',
+				value[0:-1] + 'а',
+				value[0:-1] + 'ая',
+				value[0:-1] + 'ок',
+				value[0:-1] + 'р',
+				value[0:-1] + 'ра',
+				value[0:-1] + 'ре',
+				value[0:-1] + 'д',
+				value[0:-1] + 'де',
+				value[0:-1] + 'с',
+				value[0:-1] + 'у',
+				value[0:-1] + 'ный',
+				value[0:-1] + 'дской',
+				value[0:-1] + 'ь',
+				value[0:-1] + 'ии',
+		
 		) for value in data]
 
-		data = dict(zip(data, value))
+		return Query_Selector.__writer(data, value)
+
+	def query_replace(query):
 		
-		json.dump(data, memory, indent=4, ensure_ascii=False)
+		query_out = []
+		query_set = []
+		
+		query_list = query.split()
+		
+		query_set.append(query.title()) 
+		query_set.append(query.upper())
+		query_set.append(query.lower())
+		
+		i = len(query_list)
+		
+		for q in query_list:
+			
+			query_set.append(''.join(q.title().split()))
+			query_set.append(''.join(q.upper().split()))
+			query_set.append(''.join(q.lower().split()))
+			
+			query_set.append(' '.join(query_list[0:i]))
+			i-=1
 
-		return data
-
-	@classmethod
-	def query_replace(cls, query):
+		Query_Selector.__item_to_json()
+		Query_Selector.__query_to_json(query_set)
+		
 		memory = open('agency_app/memory.json', 'r')
 		memory = json.loads(memory.read())
 		
-		t = query.title().split()
-		for t in t:
-			d = []
-			d.append(t)
-
-		item = dict(memory.items())
+		try:
+			if int(query):
+				query_out.append(query)
 		
-		for element in item.keys():
-			if set(item[element]) & set(d):
-				return element
+		except ValueError:	
+			for element in memory.keys():
+				if set(memory[element]).intersection(set(query_set)):
+					query_out.append(element)
+
+		return ' '.join(query_out)
+		
+		
+	def query_out(found_obj_query, query_set):
+		found_obj = []
+		if found_obj_query:
+			for q_item in found_obj_query:
+				found_obj.append(q_item)
+
+
+
+		for value_set in found_obj:
+			if set(str(query_set).split()).difference(str(value_set).split()):
+				indx = found_obj.index(value_set)
+				del found_obj[indx]
+
+		return found_obj
+
+
 
 
 class Searcher(View):
-
 	template = "search.html"
-	
+
 	def __init__(self):
 		self.found_obj = []
-		self.query = ''	
-	
+		self.query = ''	 
 
 	def get(self, request, *args, **kwargs):
+		query = self.request.GET.get('q') 
+		res = query
+		query_set = Query_Selector.query_replace(query)
+			
+		for query_s in query_set.split():
+			
+			found_obj_query = Property.objects.filter(
+			
+				Q(id_prop__icontains=query_s)|
+				Q(category__name__icontains=query_s)|
+				Q(appointment__appointment__icontains=query_s)|
+				Q(agent__first_name__icontains=query_s)|
+				Q(agent__last_name__icontains=query_s)|
+				Q(city__name__iexact=query_s)|
+				Q(street__iexact=query_s)| 
+				Q(hnum__icontains=query_s)|
+				Q(area__icontains=query_s)|
+				Q(areafield__icontains=query_s)|
+				Q(flor__icontains=query_s)|
+				Q(title__icontains=query_s)|
+				Q(desc__icontains=query_s)|
+				Q(saler__icontains=query_s)
+			
+			)
+		try:
+			if found_obj_query:
+				self.found_obj = Query_Selector.query_out(found_obj_query, query_set)
 		
-		query = self.request.GET.get('q')
-		res = query #  res - вывод обратно юзеру
-		data = Query_Selector.queries_to_json(query)
-		e = Query_Selector.query_replace(query)
-		print(query)
-		
-		# регистронезависимый поиск одного слова
-		query_set = [
-			[''.join(query.upper())],
-			[''.join(query.lower())],
-			[''.join(query.title())]
-		]
+		except UnboundLocalError:
+			self.found_obj = []
 		
 		
-		# регистронезависимый поиск более чем одного слова
-		if len(query.title().split()) > 1:
-			query_set = [
-				query.upper().split(),
-				query.lower().split(),
-				query.title().split(),
-				[query.upper()],
-				[query.lower()],
-				[query.title()]
-			]
-		
-		print(query_set)
-		i = 0
-		for query_s in query_set: # цикл экземпляров списке вариантов регистра
-			print(query_s)
-			for q in query_s: # список слов в запросе в цикле! = q
-				i += 1
-				print(q)
-				print(i)
-				print(len(query_set))
-				q = '' if len(q) == 1 else q # запрос правда, если в нем более одного символа иначе он пустая строка!
-				found_obj_query = Property.objects.filter(
-					Q(id_prop__icontains=q)|
-					Q(category__name__icontains=q)|
-					Q(appointment__appointment__icontains=q)|
-					Q(agent__first_name__icontains=q)|
-					Q(agent__last_name__icontains=q)|
-					Q(city__name__iexact=q)|
-					Q(street__iexact=q)| 
-					Q(hnum__icontains=q)|
-					Q(area__icontains=q)|
-					Q(areafield__icontains=q)|
-					Q(flor__icontains=q)|
-					Q(title__icontains=q)|
-					Q(desc__icontains=q)|
-					Q(saler__icontains=q)
-				)
-				
-				if found_obj_query:
-					self.found_obj = found_obj_query
-				elif(i == len(query_set) and found_obj_query == 0):
-					query_s.append(e)
-						
-
-
 		num = len([i for i in self.found_obj])
 		num = deviation(num)
-		
+			
 		context = {
-			'articles': (self.found_obj),
-			'categories': Category.objects.all(),
-			'qu': (res),
-			'word': num,
-			'main_media': Advertising.objects.all(),
-			'cities': City.objects.all(),
-			'question': Qeustions.objects.all(),
-			'appointment': Appointement.objects.all(),
-		}
-		
+				'articles': (self.found_obj),
+				'categories': Category.objects.all(),
+				'qu': res,
+				'word': num,
+				'main_media': Advertising.objects.all(),
+				'cities': City.objects.all(),
+				'question': Qeustions.objects.all(),
+				'appointment': Appointement.objects.all(),
+			}
+
 		return render(self.request, self.template, context)
+	
