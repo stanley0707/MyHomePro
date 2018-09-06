@@ -4,6 +4,7 @@
 <div class="card q_card" role="alert">
     <div class="card-body">
             <h6>По запросу <a href="https://www.google.com/search?q={{ qu }}">{{ qu }}</a> найдено: {{ articles.count }} {{ word }} </h6>
+            <a href="" onclick="javascript:history.back(-2); return false;"><i class="material-icons">undo</i>назад</a>
     </div>
 </div>
 {% endblock card %}

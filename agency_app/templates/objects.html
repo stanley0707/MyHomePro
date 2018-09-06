@@ -42,6 +42,7 @@
    {% for q in question %}
       <button type="button"  class="card" data-toggle="modal" data-target="#{{ q.slug }}">
                 <div class="card-body">
+                  <i class="material-icons" style="padding: 12px; position: absolute; left: 0; color:#00cae3;">priority_high</i>
                         {{ q.quest }}
                 </div>
         </button>
@@ -62,7 +63,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">закрыть</button>
-        <button type="button" class="btn btn-primary">подробно</button>
+        <button type="button" class="btn btn-info">подробно</button>
       </div>
     </div>
   </div>
@@ -193,7 +194,11 @@
       </div> <!-- cd-tab-filter -->
     </div> <!-- cd-tab-filter-wrapper -->
     <section class="cd-gallery" id="CategoryContent">
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
+
+        {% block card %}
+    {% endblock card %}
+      <ul class="cd-gallery-price"  id="products">
+        <div class="alert alert-info alert-dismissible fade show search_alert" role="alert">
           <div class="card-body">
                     <h6>Вы можете воспользоваться удобным поисковиком или выставить необходимые вам параметры в панели слева.</h6>
                     </div>
@@ -201,10 +206,6 @@
           <span aria-hidden="true">&times;</span>
           </button>
         </div>
-    
-    {% block card %}
-    {% endblock card %}
-      <ul class="cd-gallery-price"  id="products">
         {% block contento %}
         {% block content_сategiries %}
             {% for article in articles %}

@@ -275,7 +275,6 @@ class Query_Selector:
 
 		return ' '.join(query_out)
 		
-	#@staticmethod	
 	def query_out(found_obj_query, query_set):
 		found_obj = []
 		if found_obj_query:

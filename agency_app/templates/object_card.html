@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 <li class="mix mix-price selected_obj {{ article.city.slug }} {{ article.category.slug }} {{ article.price }} {{ article.stok.tag }} {{ article.appointment.slug }} {% if article.status %} interest {% endif %}" id="mixit" data-price="{{ article.price }}" >
 <div class="card mb-3 line_card card-nav-tabs">
@@ -17,13 +18,17 @@
     <div class=" ml-auto card_agent_avatar">
        <img src="{{ article.agent.avatar.url }}" alt="Thumbnail Image" class="rounded-circle agent_img img-fluid">
     </div>
-    <a href="{{ article.get_absolute_url }}" class="card-agent-name">{{ article.agent.first_name }} {{ article.agent.last_name }}</a>
+    <a href="{{ article.get_absolute_url }}" class="card-agent-name">{{ article.agent.first_name }} {{ article.agent.last_name }}
+    <p class="text-muted card-major">агент</p></a>
 
-    <p class="text-muted card-major">агент</p>
+    
     </div>
     <h4 class="card-title">{{ article.title }}</h4>
     <p class="card-text">{{ article.desc|truncatechars:130 }}</p>
-    <p class="card-text"><small class="text-muted">{{ article.date }}</small></p>
+    <p class="card-text"><small class="text-muted">{% language 'ru' %}
+              {{ article.date|date:"j E Y"}}
+            {% endlanguage %}
+          </small></p>
     <div class="card-footer-obj">
     <a href="{{ article.get_absolute_url }}" class="btn btn-info"> смотреть </a>
     <h1 class="price"><img src="{% static 'images/ruble.svg' %}">{{ article.price }}</h1>

@@ -2218,7 +2218,7 @@ select.form-control:focus::-ms-value {
 }
 
 .form-control-plaintext {
-  display: block;
+  display: table-row-group;
   width: 100%;
   padding-top: 0.4375rem;
   padding-bottom: 0.4375rem;
@@ -3413,7 +3413,7 @@ tbody.collapse.show {
   background-color: #ffffff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  border-radius: 0.075rem;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
@@ -4940,7 +4940,7 @@ tbody.collapse.show {
 .alert {
   position: relative;
   padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0em;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
@@ -5541,7 +5541,7 @@ button.close {
   background-color: #ffffff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
+  border-radius: 0.15rem!important;
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
   outline: 0;
 }
@@ -13835,7 +13835,7 @@ textarea {
 
 .navbar .dropdown-item:hover,
 .navbar .dropdown-item:focus {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
   background-color: #fff;
   color: #555;
 }
@@ -13965,7 +13965,7 @@ textarea {
 
 .navbar.bg-primary .dropdown-item:hover,
 .navbar.bg-primary .dropdown-item:focus {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
   background-color: #9c27b0;
   color: #fff;
 }
@@ -13982,7 +13982,7 @@ textarea {
 
 .navbar.bg-info .dropdown-item:hover,
 .navbar.bg-info .dropdown-item:focus {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
   background-color: #00bcd4;
   color: #fff;
 }
@@ -13999,7 +13999,7 @@ textarea {
 
 .navbar.bg-warning .dropdown-item:hover,
 .navbar.bg-warning .dropdown-item:focus {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
   background-color: #ff9800;
   color: #fff;
 }
@@ -14162,7 +14162,7 @@ textarea {
 .alert {
   border: 0;
   border-radius: 0;
-  padding: 20px 15px;
+  padding: 15px 10px;
   line-height: 20px;
 }
 
@@ -14407,8 +14407,8 @@ textarea {
 
 .nav-pills .nav-item .nav-link.active {
   color: #fff;
-  background-color: #9c27b0;
-  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(156, 39, 176, 0.6);
+  background-color: #00cae3;
+  box-shadow: 0 5px 20px 0px #00cae3, 0 13px 24px -11px #00cae3;
 }
 
 .nav-pills .nav-item i {
@@ -15121,7 +15121,7 @@ h2.title {
   font-weight: normal;
   text-decoration: none;
   font-size: .8125rem;
-  border-radius: 0.125rem;
+  border-radius: 0.075rem;
   margin: 0 0.3125rem;
   -webkit-transition: all 150ms linear;
   -moz-transition: all 150ms linear;
@@ -15149,8 +15149,8 @@ h2.title {
 .dropdown-menu a:hover,
 .dropdown-menu a:focus,
 .dropdown-menu a:active {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
-  background-color: #9c27b0;
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
+  background-color: #00bcd4;
   color: #FFFFFF;
 }
 

@@ -18,7 +18,187 @@
   width: 100%;
   height: 100%;
   overflow: visible;
-  background: #ffffff url('//cdnjs.cloudflare.com/ajax/libs/file-uploader/3.7.0/processing.gif') no-repeat center center;
+  background: #ffffff;
+}
+
+ .cssload-thecube {
+  width: 51px;
+  height: 51px;
+  margin: 0 auto;
+  margin-top: 50vh;
+  position: relative;
+  transform: rotateZ(45deg);
+    -o-transform: rotateZ(45deg);
+    -ms-transform: rotateZ(45deg);
+    -webkit-transform: rotateZ(45deg);
+    -moz-transform: rotateZ(45deg);
+}
+.cssload-thecube .cssload-cube {
+  position: relative;
+  transform: rotateZ(45deg);
+    -o-transform: rotateZ(45deg);
+    -ms-transform: rotateZ(45deg);
+    -webkit-transform: rotateZ(45deg);
+    -moz-transform: rotateZ(45deg);
+}
+.cssload-thecube .cssload-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+}
+.cssload-thecube .cssload-cube:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,188,212,0.98);
+  animation: cssload-fold-thecube 1.56s infinite linear both;
+    -o-animation: cssload-fold-thecube 1.56s infinite linear both;
+    -ms-animation: cssload-fold-thecube 1.56s infinite linear both;
+    -webkit-animation: cssload-fold-thecube 1.56s infinite linear both;
+    -moz-animation: cssload-fold-thecube 1.56s infinite linear both;
+  transform-origin: 100% 100%;
+    -o-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    -webkit-transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
+}
+.cssload-thecube .cssload-c2 {
+  transform: scale(1.1) rotateZ(90deg);
+    -o-transform: scale(1.1) rotateZ(90deg);
+    -ms-transform: scale(1.1) rotateZ(90deg);
+    -webkit-transform: scale(1.1) rotateZ(90deg);
+    -moz-transform: scale(1.1) rotateZ(90deg);
+}
+.cssload-thecube .cssload-c3 {
+  transform: scale(1.1) rotateZ(180deg);
+    -o-transform: scale(1.1) rotateZ(180deg);
+    -ms-transform: scale(1.1) rotateZ(180deg);
+    -webkit-transform: scale(1.1) rotateZ(180deg);
+    -moz-transform: scale(1.1) rotateZ(180deg);
+}
+.cssload-thecube .cssload-c4 {
+  transform: scale(1.1) rotateZ(270deg);
+    -o-transform: scale(1.1) rotateZ(270deg);
+    -ms-transform: scale(1.1) rotateZ(270deg);
+    -webkit-transform: scale(1.1) rotateZ(270deg);
+    -moz-transform: scale(1.1) rotateZ(270deg);
+}
+.cssload-thecube .cssload-c2:before {
+  animation-delay: 0.195s;
+    -o-animation-delay: 0.195s;
+    -ms-animation-delay: 0.195s;
+    -webkit-animation-delay: 0.195s;
+    -moz-animation-delay: 0.195s;
+}
+.cssload-thecube .cssload-c3:before {
+  animation-delay: 0.39s;
+    -o-animation-delay: 0.39s;
+    -ms-animation-delay: 0.39s;
+    -webkit-animation-delay: 0.39s;
+    -moz-animation-delay: 0.39s;
+}
+.cssload-thecube .cssload-c4:before {
+  animation-delay: 0.585s;
+    -o-animation-delay: 0.585s;
+    -ms-animation-delay: 0.585s;
+    -webkit-animation-delay: 0.585s;
+    -moz-animation-delay: 0.585s;
+}
+
+
+
+@keyframes cssload-fold-thecube {
+  0%, 10% {
+    transform: perspective(94px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%,
+        75% {
+    transform: perspective(94px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%,
+        100% {
+    transform: perspective(94px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@-o-keyframes cssload-fold-thecube {
+  0%, 10% {
+    -o-transform: perspective(94px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%,
+        75% {
+    -o-transform: perspective(94px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%,
+        100% {
+    -o-transform: perspective(94px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@-ms-keyframes cssload-fold-thecube {
+  0%, 10% {
+    -ms-transform: perspective(94px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%,
+        75% {
+    -ms-transform: perspective(94px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%,
+        100% {
+    -ms-transform: perspective(94px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes cssload-fold-thecube {
+  0%, 10% {
+    -webkit-transform: perspective(94px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%,
+        75% {
+    -webkit-transform: perspective(94px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%,
+        100% {
+    -webkit-transform: perspective(94px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes cssload-fold-thecube {
+  0%, 10% {
+    -moz-transform: perspective(94px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%,
+        75% {
+    -moz-transform: perspective(94px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%,
+        100% {
+    -moz-transform: perspective(94px) rotateY(180deg);
+    opacity: 0;
+  }
 }
 
 .wrapper-content{
@@ -163,6 +343,7 @@
 .card_wrapper .share-toggle {
   z-index: 2;
 }
+
 .card_wrapper .share-toggle:before {
   content: "\f1e0";
   font-family: 'als_spb-webfont';
@@ -1122,15 +1303,14 @@ position: relative;
 }
 
 .card-agent-name {
-    position: absolute;
+    position: static;
     display: inline-block;
-    font-weight: 600;
-    padding: 7px 72px 0px;
+    font-weight: 550;
+    padding: 7px 0px 0px 20px;
+    width: 70%;
 }
-
 .card-major {
     float: right;
-    padding: 26px 20px;
     display: inline-block;
     font-weight: 500!important;
     width: 100%;
@@ -1697,7 +1877,10 @@ xcustom form elements
   .sticky .slider-wrapper .caption {
     display: none;
   }
-
+  .cd-gallery li {
+    width: 100%!important;
+    margin-bottom: 0 auto;
+  }
  }
 
 .sticky-quest{
@@ -1717,6 +1900,7 @@ xcustom form elements
     border-radius: 2px;
     width: 250px;
     border-radius: 0.1em !important;
+    cursor: pointer;
 
 
 }
@@ -1738,8 +1922,6 @@ xcustom form elements
 
   .cd-filter{
     width: 80%!important;
-
-
   }
 
   .cd-filter-block li .togglebutton label {
@@ -1747,11 +1929,19 @@ xcustom form elements
         display: -webkit-inline-box;
     }
 
-      .cd-filter-block li .togglebutton {
+  .cd-filter-block li .togglebutton {
         /* padding: 5px 0px 15px 0px; */
         float: left;
         padding: 0;
-      }
+  }
+
+    .search_alert{
+    margin-left: 1%!important;
+    display: flex!important;
+    top: 70px!important;
+    left: 1%;
+    }
+
  }
 
 .modal-backdrop.show {
@@ -2011,8 +2201,6 @@ xcustom form elements
 }
 
 .agent_img {
-    position: absolute!important;
-    display: inline-block!important;
     border-radius: 50% !important;
     float: left!important;
     height: 60px;
@@ -2036,6 +2224,24 @@ xcustom form elements
 .cd-filters .price-slider {
     width: 90%;
 }
+
+.cd-gallery .search_alert{
+    display: inline-flex;
+    top: 10px;
+    position: static;
+    border-radius: 2px;
+    padding: 2px;
+    box-shadow: 0 14px 26px -12px rgba(0, 188, 212, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 188, 212, 0.2);
+    z-index: 0!important
+
+}
+.cd-gallery .search_alert .close{
+  position: relative;
+  height: 100%;
+
+}
+
+
 
 @media screen and (max-width: 380px){
       .cd-filter {
@@ -2061,7 +2267,7 @@ xcustom form elements
         width: 100%;
 
       }
-      .sticky .container {
+       .sticky .container {
         width: 100%;
         margin: 30px auto 0;
         padding-left: 2%;
@@ -2069,7 +2275,7 @@ xcustom form elements
 
       }
 
-      .sticky .slider-wrapper {
+       .sticky .slider-wrapper {
         position: relative;
         margin-bottom: 1%;
         border-radius: 2px;
@@ -2083,7 +2289,7 @@ xcustom form elements
             0 1px 2px rgba(0,0,0, 0.24);
       }
 
-       .sticky .slider-wrapper li {
+        .sticky .slider-wrapper li {
         display: none;
       }
 
@@ -2093,7 +2299,7 @@ xcustom form elements
 
 
 
-      .sticky .slider-wrapper .addvert {
+        .sticky .slider-wrapper .addvert {
         position: absolute;
         width:-webkit-fill-available!important;
         height: auto;
@@ -2101,36 +2307,36 @@ xcustom form elements
         left: 0;
       }
 
-      .sticky .addvert_obj{
+        .sticky .addvert_obj{
         height: 100%!important;
       }
-      .q_card {
+        .q_card {
           margin-bottom: 0!important;
           margin-top: 10px!important;
           /* position: relative; */
           display: -webkit-inline-box;
       }
-      .card-img-overlay {
+        .card-img-overlay {
         display: none;
       }
 
-      .rounded-circle {
+        .rounded-circle {
           height: 40px;
           width: 40px;
       }
 
-      .aget-info {
+        .aget-info {
         height: 40px;
       }
 
-      .card-agent-name {
-          padding: 0px 0px 0px 50px!important;
+        .card-agent-name {
+          padding: 0!important;
       }
-      .card-major {
-          padding: 20px 4px;
+       .card-major {
+          padding: 0;
       }
 
-      .card-footer-obj h1 {
+        .card-footer-obj h1 {
           color: #5BC73F;
           float: right;
           font-size: 1.2em;
@@ -2139,34 +2345,43 @@ xcustom form elements
           margin-top: 0!important;
       }
 
-      .card-footer-obj h1 img {
+        .card-footer-obj h1 img {
           height: 1em;
       }
 
-      .card .card-body, .card .card-footer {
+       .card .card-body, .card .card-footer {
           padding: 0.9375rem 1em;
       }
 
-      .btn {
+        .btn {
         padding: 10px 10px;
         margin: 0.125rem 1px;
         font-weight: 600;
       }
 
-      .cd-filter form {
+        .cd-filter form {
           padding: 70px 10px;
       }
 
-      .cd-filter-block li {
+        .cd-filter-block li {
           padding: 8px 10px 33px;
       }
 
-      .cd-tab-filter-wrapper {
+        .cd-tab-filter-wrapper {
           height: 50px;
       }
 
-      .cd-filter-block li .togglebutton label {
+        .cd-filter-block li .togglebutton label {
         width: auto;
         display: -webkit-inline-box;
-    }
+      }
+ }
+
+ @media screen and (max-width: 550px){
+  .cd-gallery .search_alert {
+    display: none!important;
+    visibility: hidden; 
+  }
+
+
  }

@@ -1,19 +1,18 @@
-/*!
+@font-face{
 
- =========================================================
- * Material Kit - v2.0.3
- =========================================================
+font-family: 'als_spb-webfont';
 
- * Product Page: https://www.creative-tim.com/product/material-kit
- * Copyright 2018 Creative Tim (http://www.creative-tim.com)
+src: url('../fonts/als_spb-webfont.ttf');
 
- * Designed by www.invisionapp.com Coded by www.creative-tim.com
+src: url('../fonts/als_spb-webfont.ttf?iefix') format('ttf'),
 
- =========================================================
+url('../fonts/als_spb-webfont.woff') format('woff'),
 
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+font-weight: normal;
 
- */
+font-style: normal;
+
+}
 
 .card {
   font-size: .875rem;
@@ -54,7 +53,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "als_spb-webfont",  sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -458,7 +457,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "als_spb-webfont",  sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -929,7 +928,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: als_spb-webfont, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 code {
@@ -2219,7 +2218,7 @@ select.form-control:focus::-ms-value {
 }
 
 .form-control-plaintext {
-  display: block;
+  display: table-row-group;
   width: 100%;
   padding-top: 0.4375rem;
   padding-bottom: 0.4375rem;
@@ -4601,6 +4600,7 @@ tbody.collapse.show {
 .card-body {
   flex: 1 1 auto;
   padding: 1.25rem;
+  top: 30px;
 }
 
 .card-title {
@@ -4662,7 +4662,7 @@ tbody.collapse.show {
 }
 
 .card-img-overlay {
-  position: relative!important;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -4941,7 +4941,7 @@ tbody.collapse.show {
 .alert {
   position: relative;
   padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5em;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
@@ -5376,7 +5376,7 @@ button.close {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: 1rem;
+  border-radius: 0.25rem;
 }
 
 .badge:empty {
@@ -5431,8 +5431,8 @@ button.close {
 }
 
 .badge-info {
-  color: #ffffff;
-  background-color: #00bcd4;
+    color: #ffffff;
+    background-color: #00bcd4;
 }
 
 .badge-info[href]:hover,
@@ -5542,7 +5542,7 @@ button.close {
   background-color: #ffffff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
+  border-radius: 0.15rem!important;
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
   outline: 0;
 }
@@ -5642,7 +5642,7 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "als_spb-webfont", "Helvetica", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5767,7 +5767,7 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "als_spb-webfont", "Helvetica", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -10909,7 +10909,7 @@ legend {
 }
 
 .serif-font {
-  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-family: "als_spb-webfont", serif;
 }
 
 * {
@@ -14089,11 +14089,11 @@ textarea {
 }
 
 .badge {
-  padding: 5px 8px;
-  /* text-transform: uppercase; */
-  font-size: 0.9em;
-  font-weight: 500;
-  color: #333;
+    padding: 5px 8px;
+    /* text-transform: uppercase; */
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #333;
 }
 
 .badge.badge-primary {
@@ -14137,7 +14137,6 @@ textarea {
 .badge-info[href]:hover,
 .badge-info[href]:focus {
   background-color: #efefef;
-  /* padding:  5px; */
 }
 
 .badge-success[href]:hover,
@@ -14164,7 +14163,7 @@ textarea {
 .alert {
   border: 0;
   border-radius: 0;
-  padding: 20px 15px;
+  padding: 15px 10px;
   line-height: 20px;
 }
 
@@ -14409,8 +14408,8 @@ textarea {
 
 .nav-pills .nav-item .nav-link.active {
   color: #fff;
-  background-color: #9c27b0;
-  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(156, 39, 176, 0.6);
+  background-color: #00cae3;
+  box-shadow: 0 5px 20px 0px #00cae3, 0 13px 24px -11px #00cae3;
 }
 
 .nav-pills .nav-item i {
@@ -14539,7 +14538,7 @@ h6,
 .h2,
 .h3,
 .h4 {
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "als_spb-webfont" sans-serif;
   font-weight: 300;
   line-height: 1.5em;
 }
@@ -14630,7 +14629,7 @@ small,
 .footer-big h4,
 .media .media-heading {
   font-weight: 700;
-  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-family: "als_spb-webfont", serif;
 }
 
 .title,

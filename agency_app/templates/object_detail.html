@@ -111,6 +111,11 @@ box-shadow: inset 1px 1px 38px -7px rgba(0,252,76,1);
     <div class="container">
       <div class="row">
         <div class="col-md-6">
+          <a href="" onclick="javascript:history.back(-2); return false;"><i class="material-icons">undo</i>назад</a>
+   <a href="#" id="{{ article.category.slug }}" class="badge badge-info"># {{ article.category }}</a>
+   <a href="#" id="{{ article.city.slug }}" class="badge badge-info"># {{ article.city  }}</a>
+   <a href="#" id="{{ article.appointment.slug }}" class="badge badge-info"># {{ article.appointment  }}</a>
+   <a href="{{ article.get_absolute_url }}" class="badge badge-info">id: {{ article.id_prop }}</a>
           <h1 class="title">{{ article.title }}</h1>
           <h1 style="font-size: 1.5em" class="price"><img src="{% static 'images/ruble.svg' %}">{{ article.price }}</h1>
           <h1 style="font-size: 1.5em" class="price"><i style=" color: #2DED5D" class="material-icons">zoom_out_map</i> {{ article.area }} м<sup>2</sup></h1>
@@ -280,7 +285,7 @@ box-shadow: inset 1px 1px 38px -7px rgba(0,252,76,1);
                     </div>
 
                     <div class="text-center">
-                      <input type="submit" class="btn btn-primary btn-round"></input>
+                      <input type="submit" class="btn btn-info btn-round"></input>
                     </div>
                   </form>
           </div>
