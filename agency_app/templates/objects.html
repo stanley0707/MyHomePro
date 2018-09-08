@@ -94,8 +94,21 @@
             <div type="text" id="sliderDouble"/></div>
           </div>
           </li>
+
+
           
             <h4 class="text-li-article"> опции </h4>
+           <ul class="cd-filter-content cd-filters list" style="width: 100%;">
+               <li>
+                <div class="togglebutton">
+                <label>
+                      <input class="filter"  data-filter=".{{ city.slug }}" type="checkbox" id="fil{{ city.slug }}">
+                      <span class="toggle" for="{{ city.slug }}"></span>популярное
+                      <i class="material-icons" style="color:#F2A89E; padding-left: 15px;">whatshot</i>
+                </label>
+              </div>
+              </li>
+            </ul>
               <li>
               <div class="togglebutton">
               <label>

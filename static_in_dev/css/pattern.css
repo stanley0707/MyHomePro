@@ -2026,7 +2026,7 @@ xcustom form elements
       
       .cd-main-content .sticky-menu{
         display: block;
-        padding: 1px;
+        padding: 1px 10px 0px 1px;
         padding-top: 66px;
 
         

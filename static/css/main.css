@@ -3413,7 +3413,7 @@ tbody.collapse.show {
   background-color: #ffffff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  border-radius: 0.075rem;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
@@ -4600,7 +4600,6 @@ tbody.collapse.show {
 .card-body {
   flex: 1 1 auto;
   padding: 1.25rem;
-  top: 30px;
 }
 
 .card-title {
@@ -4941,7 +4940,7 @@ tbody.collapse.show {
 .alert {
   position: relative;
   padding: 0.75rem 1.25rem;
-  margin-bottom: 0.5em;
+  margin-bottom: 0em;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
@@ -13836,7 +13835,7 @@ textarea {
 
 .navbar .dropdown-item:hover,
 .navbar .dropdown-item:focus {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
   background-color: #fff;
   color: #555;
 }
@@ -13966,7 +13965,7 @@ textarea {
 
 .navbar.bg-primary .dropdown-item:hover,
 .navbar.bg-primary .dropdown-item:focus {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
   background-color: #9c27b0;
   color: #fff;
 }
@@ -13983,7 +13982,7 @@ textarea {
 
 .navbar.bg-info .dropdown-item:hover,
 .navbar.bg-info .dropdown-item:focus {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
   background-color: #00bcd4;
   color: #fff;
 }
@@ -14000,7 +13999,7 @@ textarea {
 
 .navbar.bg-warning .dropdown-item:hover,
 .navbar.bg-warning .dropdown-item:focus {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
   background-color: #ff9800;
   color: #fff;
 }
@@ -14601,14 +14600,15 @@ h5,
 
 h6,
 .h6 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
+  font-size: 0.95rem;
+  text-transform: none;
   font-weight: 500;
 }
 
 p {
   font-size: 14px;
   margin: 0 0 10px;
+  color: #;
 }
 
 b {
@@ -14628,7 +14628,7 @@ small,
 .footer-big h5,
 .footer-big h4,
 .media .media-heading {
-  font-weight: 700;
+  font-weight: 500;
   font-family: "als_spb-webfont", serif;
 }
 
@@ -15122,7 +15122,7 @@ h2.title {
   font-weight: normal;
   text-decoration: none;
   font-size: .8125rem;
-  border-radius: 0.125rem;
+  border-radius: 0.075rem;
   margin: 0 0.3125rem;
   -webkit-transition: all 150ms linear;
   -moz-transition: all 150ms linear;
@@ -15150,8 +15150,8 @@ h2.title {
 .dropdown-menu a:hover,
 .dropdown-menu a:focus,
 .dropdown-menu a:active {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
-  background-color: #9c27b0;
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
+  background-color: #00bcd4;
   color: #FFFFFF;
 }
 
@@ -15799,7 +15799,7 @@ h2.title {
 
 .togglebutton label {
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.26);
+  color: #6FABB0;
   height: 14px;
 }
 

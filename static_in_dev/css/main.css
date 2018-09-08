@@ -14600,8 +14600,8 @@ h5,
 
 h6,
 .h6 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
+  font-size: 0.95rem;
+  text-transform: none;
   font-weight: 500;
 }
 
@@ -14627,7 +14627,8 @@ small,
 .footer-big h5,
 .footer-big h4,
 .media .media-heading {
-  font-weight: 700;
+  color:#0F3840;
+  font-weight: 500;
   font-family: "als_spb-webfont", serif;
 }
 

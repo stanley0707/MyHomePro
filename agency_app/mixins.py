@@ -4,6 +4,7 @@ from django.urls import reverse
 from geopy.geocoders import Yandex
 
 
+
 class CategoryListMixin(MultipleObjectMixin):
     def get_context_data(self, *args, **kwargs):
         context = {}

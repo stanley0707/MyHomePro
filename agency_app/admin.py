@@ -11,6 +11,7 @@ from agency_app.models import(
         City,
         Qeustions,
         Appointement,
+        PropertyStatistic
     )
 
 
@@ -53,7 +54,11 @@ class AppointementAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('appointment',),
     }
-        
+
+class PropertyStatisticAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'date', 'views')  # отображаемые поля в админке
+    search_fields = ('__str__', )               # поле, по которому производится поиск      
+
 
 admin.site.register(City, CityProp)
 admin.site.register(Advertising, AdminAdvertising)
@@ -64,4 +69,5 @@ admin.site.register(Agent, AgentAdmin)
 admin.site.register(PartnerStok, PartnerStokAdmin)
 admin.site.register(Qeustions, QeustionsAdmin)
 admin.site.register(Appointement, AppointementAdmin)
+admin.site.register(PropertyStatistic, PropertyStatisticAdmin)
 

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 import random
 
 
@@ -91,7 +92,8 @@ class Property(models.Model):
     stok     = models.ForeignKey('PartnerStok', verbose_name=u'акция', on_delete=models.PROTECT, blank=True, null=True)
     agent    = models.ForeignKey('Agent', verbose_name=u'агент', on_delete=models.PROTECT)
     appointment = models.ForeignKey('Appointement', verbose_name=u'назначение', on_delete=models.PROTECT)
-    
+    coun     = models.PositiveIntegerField(default=0, verbose_name=u'просмотры')
+
     city     = models.ForeignKey('City', verbose_name=u'город', on_delete=models.PROTECT)
     street   = models.CharField(max_length=150, verbose_name=u'улица', blank=True)
     hnum     = models.CharField(max_length=350, verbose_name=u'номер дома', blank=True)
@@ -114,8 +116,9 @@ class Property(models.Model):
     salerphone = models.CharField(max_length=150, verbose_name=u'телефон продавца', blank=True)
 
     def __str__(self):
-        return "Объект :  {} , г. {} , ул. {} , д. {} , собственник : {} {} , цена {} , {} , {}, {}".format(
+        return "Объект :  {} ,{}, г. {} , ул. {} , д. {} , собственник : {} {} , цена {} , {} , {}, {}".format(
             self.id_prop,
+            self.title,
             self.city,
             self.street,
             self.hnum,
@@ -124,15 +127,33 @@ class Property(models.Model):
             self.price,
             self.appointment,
             self.agent,
-            self.category,
-            )
+            self.category
+        )
+
 
     def get_absolute_url(self):
         return reverse('object-detail', kwargs={'category': self.category.slug, 'slug': self.slug})
 
     class Meta:
+        db_table = "property"
         verbose_name = 'объект'
         verbose_name_plural = 'объекты'
+
+
+class PropertyStatistic(models.Model):
+    class Meta:
+        db_table = "PropertyStatistic"
+        verbose_name = 'статистика'
+        verbose_name_plural = 'статистика'
+
+    count  = models.ForeignKey(Property, verbose_name=u'просмотры')
+    date = models.DateField('Дата', default=timezone.now)   # дата
+    views = models.PositiveIntegerField('Просмотры', default=0,  blank=True, null=True)
+    url = models.CharField(max_length=150, verbose_name=u'ссылка', default='', blank=True, null=True)
+    
+    def __str__(self):
+        return 'id:{}, {}'.format(self.count.id_prop, self.count.title)
+
 
 
 class City(models.Model):

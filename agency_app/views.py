@@ -12,6 +12,7 @@ from agency_app.models import (
 		City,
 		Qeustions,
 		Appointement,
+		PropertyStatistic
 	)
 
 from django.forms import modelformset_factory
@@ -20,7 +21,6 @@ from agency_app.mixins import(
 		CategoryListMixin,
 		ContactFormMixin,
 		GeoCoorMixin,
-
 	)
 
 from django.db.models import Q
@@ -28,6 +28,8 @@ from django.http import JsonResponse
 from django.views import View
 from agency import settings
 from django.views.generic import TemplateView, CreateView, FormView
+from .decorators import counted
+
 
 def deviation(num):
 
@@ -54,8 +56,8 @@ class ObjectListView(ListView):
 	template_name = 'objects.html'
 	
 	def get_context_data(self, *args, **kwargs):
-		
 		context = super(ObjectListView, self).get_context_data(*args, **kwargs)
+		
 		context['categories'] = Category.objects.all()
 		context['articles'] = self.model.objects.all()
 		context['pages'] = Pages.objects.all()
@@ -63,7 +65,6 @@ class ObjectListView(ListView):
 		context['main_media'] = Advertising.objects.all()
 		context['question'] = Qeustions.objects.all()
 		context['appointment'] = Appointement.objects.all()
-
 		
 		return context
 
@@ -104,6 +105,7 @@ class ObjectDetailView(ContactFormMixin, GeoCoorMixin, FormView, DetailView):
 	model = Property
 	template_name = 'object_detail.html'
 
+	@counted
 	def get_context_data(self, *args, **kwargs):
 		context = super(ObjectDetailView, self).get_context_data(*args, **kwargs)
 		context['categories'] = Category.objects.all()
@@ -116,7 +118,10 @@ class ObjectDetailView(ContactFormMixin, GeoCoorMixin, FormView, DetailView):
 								self.get_object().street,
 								self.get_object().hnum
 							)
+		
 		return context
+
+	
 
 
 class ContactModelFormView(ContactFormMixin, CreateView):

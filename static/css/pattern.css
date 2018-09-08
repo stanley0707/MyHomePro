@@ -1307,7 +1307,7 @@ position: relative;
     display: inline-block;
     font-weight: 550;
     padding: 7px 0px 0px 20px;
-    width: 400px;
+    width: 70%;
 }
 .card-major {
     float: right;
@@ -1877,7 +1877,10 @@ xcustom form elements
   .sticky .slider-wrapper .caption {
     display: none;
   }
-
+  .cd-gallery li {
+    width: 100%!important;
+    margin-bottom: 0 auto;
+  }
  }
 
 .sticky-quest{
@@ -1919,8 +1922,6 @@ xcustom form elements
 
   .cd-filter{
     width: 80%!important;
-
-
   }
 
   .cd-filter-block li .togglebutton label {
@@ -1928,11 +1929,19 @@ xcustom form elements
         display: -webkit-inline-box;
     }
 
-      .cd-filter-block li .togglebutton {
+  .cd-filter-block li .togglebutton {
         /* padding: 5px 0px 15px 0px; */
         float: left;
         padding: 0;
-      }
+  }
+
+    .search_alert{
+    margin-left: 1%!important;
+    display: flex!important;
+    top: 70px!important;
+    left: 1%;
+    }
+
  }
 
 .modal-backdrop.show {
@@ -2017,7 +2026,7 @@ xcustom form elements
       
       .cd-main-content .sticky-menu{
         display: block;
-        padding: 1px;
+        padding: 1px 10px 0px 1px;
         padding-top: 66px;
 
         
@@ -2217,23 +2226,22 @@ xcustom form elements
 }
 
 .cd-gallery .search_alert{
-    display: table-row-group!important;
+    display: inline-flex;
     top: 10px;
+    position: static;
     border-radius: 2px;
     padding: 2px;
+    height: 80px;
     box-shadow: 0 14px 26px -12px rgba(0, 188, 212, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 188, 212, 0.2);
-    z-index: 0!important
+    z-index: 0!important;
 }
 .cd-gallery .search_alert .close{
   position: relative;
-  /* display: table-footer-group; */
-  top: -55px;
-  /* bottom: -30px; */
-   margin-bottom: -60px;
+  height: 100%;
 
 }
 
-}
+
 
 @media screen and (max-width: 380px){
       .cd-filter {
@@ -2259,7 +2267,7 @@ xcustom form elements
         width: 100%;
 
       }
-      .sticky .container {
+       .sticky .container {
         width: 100%;
         margin: 30px auto 0;
         padding-left: 2%;
@@ -2267,7 +2275,7 @@ xcustom form elements
 
       }
 
-      .sticky .slider-wrapper {
+       .sticky .slider-wrapper {
         position: relative;
         margin-bottom: 1%;
         border-radius: 2px;
@@ -2281,7 +2289,7 @@ xcustom form elements
             0 1px 2px rgba(0,0,0, 0.24);
       }
 
-       .sticky .slider-wrapper li {
+        .sticky .slider-wrapper li {
         display: none;
       }
 
@@ -2291,7 +2299,7 @@ xcustom form elements
 
 
 
-      .sticky .slider-wrapper .addvert {
+        .sticky .slider-wrapper .addvert {
         position: absolute;
         width:-webkit-fill-available!important;
         height: auto;
@@ -2299,36 +2307,36 @@ xcustom form elements
         left: 0;
       }
 
-      .sticky .addvert_obj{
+        .sticky .addvert_obj{
         height: 100%!important;
       }
-      .q_card {
+        .q_card {
           margin-bottom: 0!important;
           margin-top: 10px!important;
           /* position: relative; */
           display: -webkit-inline-box;
       }
-      .card-img-overlay {
+        .card-img-overlay {
         display: none;
       }
 
-      .rounded-circle {
+        .rounded-circle {
           height: 40px;
           width: 40px;
       }
 
-      .aget-info {
+        .aget-info {
         height: 40px;
       }
 
-      .card-agent-name {
-          padding: 0px 0px 0px 50px!important;
+        .card-agent-name {
+          padding: 0!important;
       }
-      .card-major {
-          padding: 20px 4px;
+       .card-major {
+          padding: 0;
       }
 
-      .card-footer-obj h1 {
+        .card-footer-obj h1 {
           color: #5BC73F;
           float: right;
           font-size: 1.2em;
@@ -2337,34 +2345,43 @@ xcustom form elements
           margin-top: 0!important;
       }
 
-      .card-footer-obj h1 img {
+        .card-footer-obj h1 img {
           height: 1em;
       }
 
-      .card .card-body, .card .card-footer {
+       .card .card-body, .card .card-footer {
           padding: 0.9375rem 1em;
       }
 
-      .btn {
+        .btn {
         padding: 10px 10px;
         margin: 0.125rem 1px;
         font-weight: 600;
       }
 
-      .cd-filter form {
+        .cd-filter form {
           padding: 70px 10px;
       }
 
-      .cd-filter-block li {
+        .cd-filter-block li {
           padding: 8px 10px 33px;
       }
 
-      .cd-tab-filter-wrapper {
+        .cd-tab-filter-wrapper {
           height: 50px;
       }
 
-      .cd-filter-block li .togglebutton label {
+        .cd-filter-block li .togglebutton label {
         width: auto;
         display: -webkit-inline-box;
-    }
+      }
+ }
+
+ @media screen and (max-width: 550px){
+  .cd-gallery .search_alert {
+    display: none!important;
+    visibility: hidden; 
+  }
+
+
  }
