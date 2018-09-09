@@ -365,8 +365,7 @@ $('.landing-page').on('click', '#filter-price',function(){
     var sorted = $('.mix').sort(compareRandomPrice)
   }
     
-  console.log(ascendingprice)
-    $('.cd-gallery-filter').html(sorted);
+  $('.cd-gallery-filter').html(sorted);
 }); 
 
 var ascendingcount = false
@@ -375,8 +374,6 @@ $('.landing-page').on('click', '#filter-count',function(){
   ascendingcount = ascendingcount ? false: true;
   if(ascendingcount == true){
     var sorted = $('.mix').sort(function(a,b){
-      console.log('это')
-    
       return (ascendingcount ==
                ($(a).find('#count').html() <
                 $(b).find('#count').html()));
@@ -388,8 +385,7 @@ $('.landing-page').on('click', '#filter-count',function(){
     var sorted = $('.mix').sort(compareRandom)
   }
     
-  console.log(ascendingcount)
-    $('.cd-gallery-filter').html(sorted);
+  $('.cd-gallery-filter').html(sorted);
 });
 
 </script>
