@@ -152,18 +152,17 @@ var buttonFilter = {
 				var $this = $(this);
 				if($this.is('input[type="radio"]') || $this.is('input[type="checkbox"]')) {
 					if($this.is(':checked') ) {
-						group.active.push($this.attr('data-filter'));
-						//group.active.push($this.attr('data-price'));
+						group.active.push($this.attr('data-count'));
+						group.active.push($this.attr('data-price'));
 					}
 				} else if($this.is('select')){
 					group.active.push($this.val());
 				} else if( $this.find('.selected').length > 0 ) {
-					group.active.push($this.attr('data-filter'));
-					//group.active.push($this.attr('data-price'));
+					group.active.push($this.attr('data-count'));
+					group.active.push($this.attr('data-price'));
 				}
 			});
 		}
-
 		self.concatenate();
 	},
   

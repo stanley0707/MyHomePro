@@ -14093,6 +14093,9 @@ textarea {
     font-size: 0.9em;
     font-weight: 500;
     color: #333;
+    -webkit-box-shadow: -1px 0px 109px 1px rgba(0,0,0,0.54);
+    -moz-box-shadow: -1px 0px 109px 1px rgba(0,0,0,0.54);
+    box-shadow: -1px 0px 109px 1px rgba(0,0,0,0.54);
 }
 
 .badge.badge-primary {
@@ -14608,7 +14611,6 @@ h6,
 p {
   font-size: 14px;
   margin: 0 0 10px;
-  color: #;
 }
 
 b {
@@ -14628,6 +14630,7 @@ small,
 .footer-big h5,
 .footer-big h4,
 .media .media-heading {
+  color:#0F3840;
   font-weight: 500;
   font-family: "als_spb-webfont", serif;
 }
@@ -15799,7 +15802,7 @@ h2.title {
 
 .togglebutton label {
   cursor: pointer;
-  color: #6FABB0;
+  color: rgba(0, 0, 0, 0.26);
   height: 14px;
 }
 

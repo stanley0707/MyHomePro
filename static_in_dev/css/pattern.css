@@ -21,6 +21,10 @@
   background: #ffffff;
 }
 
+#amount{
+    color: #0097a7;
+    font-weight: 500;
+}
  .cssload-thecube {
   width: 51px;
   height: 51px;
@@ -1283,10 +1287,11 @@ position: relative;
 }
 
 .card-footer-obj h1{
-    color:#5BC73F;
+    color: #5BC73F;
     float: right;
-    font-size:2em; 
-    font-weight: 900;
+    font-size: 1.8em;
+    font-weight: 500;
+    margin-top: 0px;
     margin-bottom: 20px;
 }
 
@@ -1782,6 +1787,7 @@ xcustom form elements
 .cd-filter-block li .togglebutton{
   padding: 5px 0px 15px 0px;
   float: left; 
+  width: 100%;
 }
 
 .cd-filter-content{

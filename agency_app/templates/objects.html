@@ -102,18 +102,19 @@
                <li>
                 <div class="togglebutton">
                 <label>
-                      <input class="filter"  data-filter=".{{ city.slug }}" type="checkbox" id="fil{{ city.slug }}">
-                      <span class="toggle" for="{{ city.slug }}"></span>популярное
-                      <i class="material-icons" style="color:#F2A89E; padding-left: 15px;">whatshot</i>
+                      <input class="filter-count"  data-filter=".count" type="checkbox" id="checkbox">
+                      <span class="toggle" for="count"></span>популярное
+                      <i class="material-icons" style="color:#F2A89E; padding-left: 17px;">whatshot</i>
                 </label>
               </div>
               </li>
-            </ul>
+            </u>
               <li>
               <div class="togglebutton">
               <label>
-                    <input class="filter-price" data-filter=".price" type="checkbox" id="checkbox1">
+                    <input class="filter-price" data-filter=".price" type="checkbox" id="checkbox">
                     <span class="toggle" for="price"></span> цена
+                    <i class="material-icons" style="color:#5BC73F; padding-left: 17px;">transit_enterexit</i>
               </label>
             </div>
             </li>
@@ -210,7 +211,7 @@
 
         {% block card %}
     {% endblock card %}
-      <ul class="cd-gallery-price"  id="products">
+      <ul class="cd-gallery-filter"  id="products">
         <div class="alert alert-info alert-dismissible fade show search_alert" role="alert">
           <div class="card-body">
                     <h6>Вы можете воспользоваться удобным поисковиком или выставить необходимые вам параметры в панели слева.</h6>
@@ -345,53 +346,7 @@ $(function() {
 
 {% block price-filter-script %}
   <script type="text/javascript">
-  var convertPrice = function(value){
-     return parseFloat(value.replace('$',''));
-}
 
-
-
-    var $filters = $("input:radio[name='brand'],input:radio[name=team]").prop('checked', false); // start all checked
-    var $categoryContent = $('#CategoryContent li');
-    $filters.click(function() {
-        // if any of the checkboxes for brand or team are checked, you want to show LIs containing their value, and you want to hide all the rest.
-        $categoryContent.hide();
-        $filters.filter(':checked').each(function(i, el) {
-            $categoryContent.filter(':contains(' + el.value + ')').show();
-        });
-    });
-
-    function showProducts(minPrice, maxPrice) {
-        $("#products li").hide().filter(function() {
-            var price = parseInt($(this).data("price"), 10);
-            return price >= minPrice && price <= maxPrice;
-        }).show();
-    }
-
-    $(function() {
-        var options = {
-            range: true,
-            min: 0,
-            max: 500000000,
-            values: [500000, 1000000],
-            slide: function(event, ui) {
-                var min = ui.values[0],
-                    max = ui.values[1];
-
-                $("#amount").val("руб " + min + " - руб " + max);
-                showProducts(min, max);
-            }
-        }, min, max;
-
-        $("#slider-range").slider(options);
-
-        min = $("#slider-range").slider("values", 0);
-        max = $("#slider-range").slider("values", 1);
-
-        $("#amount").val("руб " + min + " - руб " + max);
-
-        showProducts(min, max);
-    });
     </script>
   {% endblock price-filter-script %}
   {% block script_touch %} 
