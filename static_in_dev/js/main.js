@@ -31,7 +31,7 @@ jQuery(document).ready(function($){
 		//check if user has clicked a filter already selected 
 		} else if( filter_tab_placeholder.data('type') == selected_filter ) {
 			filter_tab_placeholder.text($(event.target).text());
-			$('.cd-tab-filter').removeClass('is-open'); 
+			$('.cd-tab-filter').removeClass('is-open');
 
 		} else {
 			//close the dropdown and change placeholder text/data-type value
@@ -188,71 +188,8 @@ var buttonFilter = {
 
 
 };
-var ascending = false
 
-$('.landing-page').on('click', '.filter-count',function(){
-	
-	ascending = ascending ? false: true;
-	if(ascending == true){
-		var count = $('.mix-count').sort(function(a,b){
-			return (ascending ==
-               ($(a).find('.count').html() <
-                $(b).find('.count').html()))
-		});
-	} else{
-		function compareRandom(a, b) {
-				return Math.random() - 0.5;
-			}
-		var count = $('.mix-count').sort(compareRandom)
-	}
-    
-	console.log(ascending)
-    $('.cd-gallery-filter').html(count);
-});
-
-var ascending_price = false
-
-$('.landing-page').on('click', '.filter-price',function(){
-	
-	ascending = ascending ? false: true;
-	if(ascending == true){
-		var sorted = $('.mix-price').sort(function(a,b){
-			return (ascending ==
-               ($(a).find('.price').html() >
-                $(b).find('.price').html()))
-		});
-	} else{
-		function compareRandom(a, b) {
-				return Math.random() - 0.5;
-			}
-		var sorted = $('.mix-price').sort(compareRandom)
-	}
-    
-	console.log(ascending)
-    $('.cd-gallery-filter').html(sorted);
-});	
-
-/*$('.landing-page').on('click', '.filter-price',function(){
-	var ascending = false;
-	
-	var sorted = $('.mix-price').sort(function(a,b){
-        return (ascending ==
-               (convertPrice($(a).find('.price').html()) < 
-                convertPrice($(b).find('.price').html()))) ? 1 : -1;
-
-    });
-    ascending = ascending ? false : true;
-    
-    $('.cd-gallery-filter').html(sorted);
-});
-
-var convertPrice = function(value){
-    return parseFloat(value.replace('$',''));
-}*/
-
-
-
-    var $filters = $("input:radio[name='brand'],input:radio[name=team]").prop('checked', false); // start all checked
+var $filters = $("input:radio[name='brand'],input:radio[name=team]").prop('checked', false); // start all checked
     var $categoryContent = $('#CategoryContent li');
     $filters.click(function() {
         // if any of the checkboxes for brand or team are checked, you want to show LIs containing their value, and you want to hide all the rest.

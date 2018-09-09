@@ -102,7 +102,7 @@
                <li>
                 <div class="togglebutton">
                 <label>
-                      <input class="filter-count"  data-filter=".count" type="checkbox" id="checkbox">
+                      <input class="filter-count"  data-filter="#count" type="checkbox" id="filter-count">
                       <span class="toggle" for="count"></span>популярное
                       <i class="material-icons" style="color:#F2A89E; padding-left: 17px;">whatshot</i>
                 </label>
@@ -112,7 +112,7 @@
               <li>
               <div class="togglebutton">
               <label>
-                    <input class="filter-price" data-filter=".price" type="checkbox" id="checkbox">
+                    <input class="filter-price" data-filter="#price" type="checkbox" id="filter-price">
                     <span class="toggle" for="price"></span> цена
                     <i class="material-icons" style="color:#5BC73F; padding-left: 17px;">transit_enterexit</i>
               </label>
@@ -209,17 +209,18 @@
     </div> <!-- cd-tab-filter-wrapper -->
     <section class="cd-gallery" id="CategoryContent">
 
-        {% block card %}
-    {% endblock card %}
-      <ul class="cd-gallery-filter"  id="products">
-        <div class="alert alert-info alert-dismissible fade show search_alert" role="alert">
+    {% block card %}
+      <div class="alert alert-info alert-dismissible fade show search_alert" role="alert">
           <div class="card-body">
-                    <h6>Вы можете воспользоваться удобным поисковиком или выставить необходимые вам параметры в панели слева.</h6>
+                    <h6>Вы можете воспользоваться удобным поисковиком и выставить необходимые вам параметры в меню .</h6>
                     </div>
+          <img style="height: 30px; margin-top:25px" src="{% static 'images/target.svg' %}">
            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
           <span aria-hidden="true">&times;</span>
           </button>
         </div>
+    {% endblock card %}
+      <ul class="cd-gallery-filter"  id="products">
         {% block contento %}
         {% block content_сategiries %}
             {% for article in articles %}
@@ -347,8 +348,53 @@ $(function() {
 {% block price-filter-script %}
   <script type="text/javascript">
 
-    </script>
+var ascendingprice = false
+$('.landing-page').on('click', '#filter-price',function(){
+  
+  ascendingprice = ascendingprice ? false: true;
+  if(ascendingprice == true){
+    var sorted = $('.mix').sort(function(c, d){
+      return (ascendingprice ==
+               ($(c).find('#price').html() >-
+                $(d).find('#price').html()));
+    });
+  } else{
+    function compareRandomPrice(с, d) {
+        return Math.random() - 0.5;
+      }
+    var sorted = $('.mix').sort(compareRandomPrice)
+  }
+    
+  console.log(ascendingprice)
+    $('.cd-gallery-filter').html(sorted);
+}); 
+
+var ascendingcount = false
+$('.landing-page').on('click', '#filter-count',function(){
+  
+  ascendingcount = ascendingcount ? false: true;
+  if(ascendingcount == true){
+    var sorted = $('.mix').sort(function(a,b){
+      console.log('это')
+    
+      return (ascendingcount ==
+               ($(a).find('#count').html() <
+                $(b).find('#count').html()));
+    });
+  } else{
+    function compareRandom(a, b) {
+        return Math.random() - 0.5;
+      }
+    var sorted = $('.mix').sort(compareRandom)
+  }
+    
+  console.log(ascendingcount)
+    $('.cd-gallery-filter').html(sorted);
+});
+
+</script>
   {% endblock price-filter-script %}
+  
   {% block script_touch %} 
   <script type="text/javascript">
      {% for cat in categories %}

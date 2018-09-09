@@ -21,6 +21,10 @@
   background: #ffffff;
 }
 
+#amount{
+    color: #0097a7;
+    font-weight: 500;
+}
  .cssload-thecube {
   width: 51px;
   height: 51px;
@@ -1283,10 +1287,11 @@ position: relative;
 }
 
 .card-footer-obj h1{
-    color:#5BC73F;
+    color: #5BC73F;
     float: right;
-    font-size:2em; 
-    font-weight: 900;
+    font-size: 1.8em;
+    font-weight: 500;
+    margin-top: 0px;
     margin-bottom: 20px;
 }
 
@@ -1782,6 +1787,7 @@ xcustom form elements
 .cd-filter-block li .togglebutton{
   padding: 5px 0px 15px 0px;
   float: left; 
+  width: 100%;
 }
 
 .cd-filter-content{
@@ -2057,7 +2063,7 @@ xcustom form elements
       }
       .sticky-menu .card .card-header{
            display: inline-flex;
-           height: 80px;
+          height: 77px;
            width: 240px;
       }
 
@@ -2227,13 +2233,13 @@ xcustom form elements
 
 .cd-gallery .search_alert{
     display: inline-flex;
-    top: 10px;
+    margin-top: 10px;
     position: static;
-    border-radius: 2px;
+    border-radius: 3px;
     padding: 2px;
-    height: 80px;
     box-shadow: 0 14px 26px -12px rgba(0, 188, 212, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 188, 212, 0.2);
-    z-index: 0!important;
+    z-index: 0!important
+
 }
 .cd-gallery .search_alert .close{
   position: relative;

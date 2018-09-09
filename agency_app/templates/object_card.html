@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load static %}
-<li class="mix mix-price mix-count selected_obj {{ article.city.slug }} {{ article.category.slug }} {{ article.price }} {{ article.stok.tag }} {{ article.appointment.slug }} {% if article.status %} interest {% endif %}" id="mixit" data-price="{{ article.price }}">
+<li class="mix selected_obj {{ article.city.slug }} {{ article.category.slug }} {{ article.price }} {{ article.stok.tag }} {{ article.appointment.slug }} {% if article.status %} interest {% endif %}" id="mixit" data-price="{{ article.price }}">
 <div class="card mb-3 line_card card-nav-tabs">
     <div class="img-container" style="background-image: url('{{ article.image.url }}'); background-repeat: no-repeat; background-size: cover; height: 300px">
      <div style="padding: 12px; float: right!important;" class="cd-filter-block">
@@ -10,7 +10,9 @@
    <a href="#" id="{{ article.category.slug }}" class="badge badge-info"># {{ article.category }}</a>
    <a href="#" id="{{ article.city.slug }}" class="badge badge-info"># {{ article.city  }}</a>
    <a href="#" id="{{ article.appointment.slug }}" class="badge badge-info"># {{ article.appointment  }}</a>
-   <a href="{{ article.get_absolute_url }}" class="badge badge-info">id: {{ article.id_prop }}</a>
+   <a href="{{ article.get_absolute_url }}#favor"  data-toggle="tooltip" class="badge badge-info">id: {{ article.id_prop }}</a>
+
+<!-- Generated markup by the plugin -->
     </div>
     </div>
   <div class="card-body">
@@ -21,7 +23,7 @@
     <a href="{{ article.get_absolute_url }}" class="card-agent-name">{{ article.agent.first_name }} {{ article.agent.last_name }}
     <p class="text-muted card-major">агент</p></a>
     <p style="color:#888; padding-left:10%;"><i class="material-icons" style="color:#00bcd4; padding: 0px 5px 3px 0px;
-    vertical-align: middle; font-size: 17px;">remove_red_eye</i><span class="count">{{ article.coun }}</span></p>
+    vertical-align: middle; font-size: 17px;">remove_red_eye</i><span id="count">{{ article.coun }}</span></p>
     
     </div>
     <h4 class="card-title">{{ article.title }}</h4>
@@ -32,7 +34,7 @@
           </small></p>
     <div class="card-footer-obj">
     <a href="{{ article.get_absolute_url }}" class="btn btn-info"> смотреть </a>
-    <h1><img src="{% static 'images/ruble.svg' %}"><span class="price">{{ article.price }}</span></h1>
+    <h1 class="price"><img src="{% static 'images/ruble.svg' %}"><span id="price">{{ article.price }}</span></h1>
     </div>
   </div>
 </div>

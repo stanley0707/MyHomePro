@@ -152,17 +152,18 @@ var buttonFilter = {
 				var $this = $(this);
 				if($this.is('input[type="radio"]') || $this.is('input[type="checkbox"]')) {
 					if($this.is(':checked') ) {
-						group.active.push($this.attr('data-count'));
+						group.active.push($this.attr('data-filter'));
 						group.active.push($this.attr('data-price'));
 					}
 				} else if($this.is('select')){
 					group.active.push($this.val());
 				} else if( $this.find('.selected').length > 0 ) {
-					group.active.push($this.attr('data-count'));
+					group.active.push($this.attr('data-filter'));
 					group.active.push($this.attr('data-price'));
 				}
 			});
 		}
+
 		self.concatenate();
 	},
   
@@ -187,10 +188,51 @@ var buttonFilter = {
 
 
 };
+var ascending = false
 
+$('.landing-page').on('click', '.filter-count',function(){
+	
+	ascending = ascending ? false: true;
+	if(ascending == true){
+		var count = $('.mix-count').sort(function(a,b){
+			return (ascending ==
+               ($(a).find('.count').html() <
+                $(b).find('.count').html()))
+		});
+	} else{
+		function compareRandom(a, b) {
+				return Math.random() - 0.5;
+			}
+		var count = $('.mix-count').sort(compareRandom)
+	}
+    
+	console.log(ascending)
+    $('.cd-gallery-filter').html(count);
+});
 
+var ascending_price = false
 
 $('.landing-page').on('click', '.filter-price',function(){
+	
+	ascending_price = ascending_price ? false: true;
+	if(ascending_price == true){
+		var sorted = $('.mix-price').sort(function(a,b){
+			return (ascending_price ==
+               ($(a).find('.price').html() >
+                $(b).find('.price').html()))
+		});
+	} else{
+		function compareRandomPrice(a, b) {
+				return Math.random() - 0.5;
+			}
+		var sorted = $('.mix-price').sort(compareRandomPrice)
+	}
+    
+	console.log(ascending_price)
+    $('.cd-gallery-filter').html(sorted);
+});	
+
+/*$('.landing-page').on('click', '.filter-price',function(){
 	var ascending = false;
 	
 	var sorted = $('.mix-price').sort(function(a,b){
@@ -200,8 +242,56 @@ $('.landing-page').on('click', '.filter-price',function(){
 
     });
     ascending = ascending ? false : true;
-
-    $('.cd-gallery-price').html(sorted);
+    
+    $('.cd-gallery-filter').html(sorted);
 });
+
+var convertPrice = function(value){
+    return parseFloat(value.replace('$',''));
+}*/
+
+
+
+    var $filters = $("input:radio[name='brand'],input:radio[name=team]").prop('checked', false); // start all checked
+    var $categoryContent = $('#CategoryContent li');
+    $filters.click(function() {
+        // if any of the checkboxes for brand or team are checked, you want to show LIs containing their value, and you want to hide all the rest.
+        $categoryContent.hide();
+        $filters.filter(':checked').each(function(i, el) {
+            $categoryContent.filter(':contains(' + el.value + ')').show();
+        });
+    });
+
+    function showProducts(minPrice, maxPrice) {
+        $("#products li").hide().filter(function() {
+            var price = parseInt($(this).data("price"), 10);
+            return price >= minPrice && price <= maxPrice;
+        }).show();
+    }
+
+    $(function() {
+        var options = {
+            range: true,
+            min: 0,
+            max: 50000000,
+            values: [500000, 1000000],
+            slide: function(event, ui) {
+                var min = ui.values[0],
+                    max = ui.values[1];
+
+                $("#amount").val("руб " + min + " - руб " + max);
+                showProducts(min, max);
+            }
+        }, min, max;
+
+        $("#slider-range").slider(options);
+
+        min = $("#slider-range").slider("values", 0);
+        max = $("#slider-range").slider("values", 1);
+
+        $("#amount").val("руб " + min + " - руб " + max);
+
+        showProducts(min, max);
+    });
 
 
