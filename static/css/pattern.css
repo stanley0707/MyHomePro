@@ -326,24 +326,6 @@
   margin-top: -42px;
 }
 
-.card_wrapper .card__social {
-  position: absolute;
-  top: 0;
-  right: 0;
-  visibility: hidden;
-  width: 160px;
-  transform: translateZ(0);
-    transform: translateX(0px);
-    transition: transform 0.35s ease;
-}
-  .card_wrapper .card__social--active {
-    visibility: visible;
-    /*z-index: 3;*/
-    transform: translateZ(0);
-    transform: translateX(-48px);
-      transition: transform 0.35s ease;
-  }
-
 .card_wrapper .share-toggle {
   z-index: 2;
 }
@@ -401,11 +383,12 @@
   color: #fff;
 }
 
-  .card_wrapper .facebook:hover,
-  .card_wrapper .twitter:hover,
-  .card_wrapper .googleplus:hover {
-    color: #eee;
-  }
+.card_wrapper .facebook:hover,
+.card_wrapper .twitter:hover,
+.card_wrapper .googleplus:hover {
+  color: #eee;
+}
+
 .tim-row {
   margin-bottom: 20px;
 }
