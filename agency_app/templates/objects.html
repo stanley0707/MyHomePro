@@ -121,9 +121,9 @@
 
             <li>
               <div class="togglebutton">
-              <label>
+              <label for="tagstock">
                     <input class="filter" data-filter=".tagstock" type="checkbox" id="fil{{ tagstock }}">
-                    <span class="toggle" for="tagstock"></span> акции 
+                    <span class="toggle" for="filtagstock"></span> акции 
               </label>
             </div>
             </li>
@@ -136,11 +136,11 @@
              {% for appoint in appointment %}
              <li>
               <div class="togglebutton">
-              <label>
-                    <input class="filter"  data-filter=".{{ appoint.slug }}" type="checkbox" id="fil{{ appoint.slug }}">
-                    <span class="toggle" for="{{ appoint.slug }}"></span>{{ appoint }}
-              </label>
-            </div>
+               <label>
+               <input class="filter"  data-filter=".{{ appoint.slug }}" type="checkbox" id="fil{{ appoint.slug }}">
+               <span class="toggle" for="fil{{ appoint.slug }}"></span>{{ appoint }}
+               <label>
+              </div>
             </li>
                {% endfor %}
           </ul> <!-- cd-filter-content -->
@@ -154,8 +154,8 @@
              <li>
               <div class="togglebutton">
               <label>
-                    <input class="filter"  data-filter=".{{ cat.slug }}" type="checkbox" id="fil{{ cat.slug }}">
-                    <span class="toggle" for="{{ cat.slug }}"></span>{{ cat.name }}
+              <input class="filter"  data-filter=".{{ cat.slug }}" type="checkbox" id="fil{{ cat.slug }}">
+              <span class="toggle" for="fil{{ cat.slug }}"></span>{{ cat.name }}
               </label>
             </div>
             </li>
@@ -170,10 +170,10 @@
              {% for city in cities %}
              <li>
               <div class="togglebutton">
-              <label>
-                    <input class="filter"  data-filter=".{{ city.slug }}" type="checkbox" id="fil{{ city.slug }}">
-                    <span class="toggle" for="{{ city.slug }}"></span>{{ city }}
-              </label>
+          <label>    
+            <input class="filter"  data-filter=".{{ city.slug }}" type="checkbox" id="fil{{ city.slug }}">
+            <span class="toggle" for="fil{{ city.slug }}"></span>{{ city }}
+          </label>
             </div>
             </li>
                {% endfor %}
@@ -398,10 +398,9 @@ $('.landing-page').on('click', '#filter-counte',function(){
 
 
 
-var $filters = $("input:radio[name='brand'],input:radio[name=team]").prop('checked', false); // start all checked
+var $filters = $("input:radio[name='brand'],input:radio[name=team]").prop('checked', false); 
     var $categoryContent = $('#CategoryContent li');
     $filters.click(function() {
-        // if any of the checkboxes for brand or team are checked, you want to show LIs containing their value, and you want to hide all the rest.
         $categoryContent.hide();
         $filters.filter(':checked').each(function(i, el) {
             $categoryContent.filter(':contains(' + el.value + ')').show();
