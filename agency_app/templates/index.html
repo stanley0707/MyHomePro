@@ -197,6 +197,7 @@
     $(window).load(function () {
       $("#sidebar").stick_in_parent();
       });
+    
     jQuery(document).ready(function($) {
       $(window).load(function() {
         setTimeout(function() {
@@ -204,12 +205,28 @@
         }, 2000);
 
       });
-});
+    });
+    var mainScrollArea = document.getElementsById('sidebar')[0];
+    var scrollTimeout;
+
+    window.onload = function () {
+      if(window.location.href == localStorage.getItem('lastUrl')) {
+        mainScrollArea.scrollTop = localStorage.getItem('scrollTop');
+      } else {
+        localStorage.setItem('lastUrl', window.location.href);
+        localStorage.setItem('scrollTop', 0);
+      }
+    }
+
+    mainScrollArea.addEventListener('scroll', function() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function() {
+        localStorage.setItem('scrollTop', mainScrollArea.scrollTop);
+      }, 100)
+    });    
  </script>
-  {% block script_touch %} {% endblock script_touch %}
-  {% block sliderscript %}{% endblock sliderscript %}
-  {% block price-filter-script %}{% endblock price-filter-script %}
-
+{% block script_touch %} {% endblock script_touch %}
+{% block sliderscript %}{% endblock sliderscript %}
+{% block price-filter-script %}{% endblock price-filter-script %}
 </body>
-
 </html>
