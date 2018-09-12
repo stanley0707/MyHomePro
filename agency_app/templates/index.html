@@ -191,40 +191,26 @@
   <script src="{% static 'js/plugins/bootstrap-datetimepicker.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/plugins/nouislider.min.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/material-kit.js' %}" type="text/javascript"></script>
-  <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/main.min.js' %}" type="text/javascript"></script>
   
   <script type="text/javascript">
     $(window).load(function () {
       $("#sidebar").stick_in_parent();
-      });
-    
+    });
+
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
+      
     jQuery(document).ready(function($) {
       $(window).load(function() {
         setTimeout(function() {
           $('#preloader').fadeOut('slow', function() {});
-        }, 2000);
+        }, 1000);
 
       });
     });
-    var mainScrollArea = document.getElementsById('sidebar')[0];
-    var scrollTimeout;
-
-    window.onload = function () {
-      if(window.location.href == localStorage.getItem('lastUrl')) {
-        mainScrollArea.scrollTop = localStorage.getItem('scrollTop');
-      } else {
-        localStorage.setItem('lastUrl', window.location.href);
-        localStorage.setItem('scrollTop', 0);
-      }
-    }
-
-    mainScrollArea.addEventListener('scroll', function() {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(function() {
-        localStorage.setItem('scrollTop', mainScrollArea.scrollTop);
-      }, 100)
-    });    
- </script>
+   </script>
 {% block script_touch %} {% endblock script_touch %}
 {% block sliderscript %}{% endblock sliderscript %}
 {% block price-filter-script %}{% endblock price-filter-script %}
