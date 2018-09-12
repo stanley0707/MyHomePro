@@ -15998,10 +15998,11 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 footer {
   padding: 0.9375rem 0;
   text-align: center;
-  display: -webkit-flex;
+  /* display: -webkit-flex; */
   /* Safari */
   /* Safari 6.1+ */
   display: flex;
+  ex; */
 }
 
 footer ul {
@@ -17281,7 +17282,7 @@ footer .pull-center {
 
 .signup-page .footer .copyright,
 .signup-page .footer a {
-  color: #FFFFFF;
+  color: #F;
 }
 
 @media all and (max-width: 991px) {

@@ -17279,10 +17279,6 @@ footer .pull-center {
   padding: 0;
 }
 
-.signup-page .footer .copyright,
-.signup-page .footer a {
-  color: #FFFFFF;
-}
 
 @media all and (max-width: 991px) {
   [class*="navbar-expand-"]>.container,

@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load static %}
-<li class="mix selected_obj {{ article.city.slug }} {{ article.category.slug }} {{ article.price }} {{ article.stok.tag }} {{ article.appointment.slug }} {% if article.status %} interest {% endif %}" id="mixit" data-price="{{ article.price }}">
+<li class="mix mix-count mix-price selected_obj {{ article.city.slug }} {{ article.category.slug }} {{ article.price }} {{ article.stok.tag }} {{ article.appointment.slug }} {% if article.status %} interest {% endif %}" id="mixit" data-price="{{ article.price }}" data-count="{{ article.coun }}">
 <div class="card mb-3 line_card card-nav-tabs">
     <div class="img-container" style="background-image: url('{{ article.image.url }}'); background-repeat: no-repeat; background-size: cover; height: 300px">
      <div style="padding: 12px; float: right!important;" class="cd-filter-block">
@@ -34,7 +34,7 @@
           </small></p>
     <div class="card-footer-obj">
     <a href="{{ article.get_absolute_url }}" class="btn btn-info"> смотреть </a>
-    <h1 class="price"><img src="{% static 'images/ruble.svg' %}"><span id="price">{{ article.price }}</span></h1>
+    <h1><img src="{% static 'images/ruble.svg' %}"><span id="price">{{ article.price }}</span></h1>
     </div>
   </div>
 </div>

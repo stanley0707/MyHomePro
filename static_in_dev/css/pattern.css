@@ -1239,8 +1239,7 @@
 
 .footer{
   width: 100% !important;
-  height: 200px ;
-  background-color: #333;
+  height: 150px ;
   top: 0 auto;
   clear: both;
 } 
@@ -1528,7 +1527,7 @@ xgallery
 }
 
 .cd-gallery{
-  min-height: 180vh;
+  min-height: 160vh;
 }
 
 .cd-gallery li {
