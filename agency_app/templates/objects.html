@@ -352,37 +352,56 @@
   <script type="text/javascript">
 
 
+
+var click = false
  $('.landing-page').on('click', '#filter-price',function(){
+  click = click ? false: true;
   
   function compareCountPrice(a, b) {
-     return ($(a).find('#price').html() -
-        $(b).find('#price').html());
+    if (click){ 
+      return ($(a).find('#price').html() -
+            $(b).find('#price').html());
+    }else{
+      return (Math.random() - 0.5)
+      
+    }
 
   }
+  
   var sorted_count_price = $('.mix-price').sort(compareCountPrice)
   $('.cd-gallery-filter2').html(sorted_count_price); 
-    
+
 });
 
 
+
+
+
+var click_count = false
 $('.landing-page').on('click', '#filter-counte',function(){
+  click_count = click_count ? false: true;
   
   function compareCount(a, b) {
+    if(click_count){
      return ($(b).find('#count').html() -
         $(a).find('#count').html());
+    }else{
+      return (Math.random() - 0.5)
+    }
 
   }
+  
   var sorted_count = $('.mix-count').sort(compareCount)
   $('.cd-gallery-filter2').html(sorted_count); 
-    
 }); 
 
 
 
 
-var $filters = $("input:radio[name='brand'],input:radio[name=team]").prop('checked', false);
+var $filters = $("input:radio[name='brand'],input:radio[name=team]").prop('checked', false); // start all checked
     var $categoryContent = $('#CategoryContent li');
     $filters.click(function() {
+        // if any of the checkboxes for brand or team are checked, you want to show LIs containing their value, and you want to hide all the rest.
         $categoryContent.hide();
         $filters.filter(':checked').each(function(i, el) {
             $categoryContent.filter(':contains(' + el.value + ')').show();
@@ -426,6 +445,23 @@ var $filters = $("input:radio[name='brand'],input:radio[name=team]").prop('check
 
 {% block script_touch %} 
   <script type="text/javascript">
-
+     {% for cat in categories %}
+       $('#{{ cat.slug }}').click(function(e){
+            e.preventDefault();
+            $('#fil{{ cat.slug }}').trigger('click');
+        });
+     {% endfor %}
+     {% for appoint in appointment %}
+        $('#{{ appoint.slug }}').click(function(e){
+            e.preventDefault();
+            $('#fil{{ appoint.slug }}').trigger('click');
+        });
+     {% endfor %}
+     {% for city in cities %}
+        $('#{{ city.slug }}').click(function(e){
+            e.preventDefault();
+            $('#fil{{ city.slug }}').trigger('click');
+        });
+      {% endfor %}
    </script>
   {% endblock script_touch %}
