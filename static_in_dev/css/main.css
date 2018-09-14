@@ -976,8 +976,8 @@ pre code {
 
 .container {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 0;
+  padding-left: 0;
   margin-right: auto;
   margin-left: auto;
 }
@@ -13663,6 +13663,7 @@ textarea {
   height: auto !important;
   resize: none;
   line-height: 1.428571 !important;
+  width: 100%;
 }
 
 .form-group input[type=file] {
@@ -17260,7 +17261,9 @@ footer .pull-center {
   border-radius: 6px;
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
   margin-bottom: 100px;
-  padding: 40px 0px;
+  padding: 20px 0px;
+  list-style-type: none;
+  left: 10%;
 }
 
 .signup-page .info-horizontal {

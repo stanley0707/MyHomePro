@@ -63,7 +63,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">закрыть</button>
-        <button type="button" class="btn btn-info">подробно</button>
+        <a href="/contact" type="button" class="btn btn-info">обратиться</a>
       </div>
     </div>
   </div>
@@ -236,16 +236,8 @@
 </div>
  {% endblock content %}
 
- {% block sliderscript %}
-  <script type="text/javascript"></script>
-{% endblock sliderscript %}
 
-{% block price-filter-script %}
-  <script type="text/javascript"></script>
-{% endblock price-filter-script %}
-  
-
-{% block script_touch %} 
+  {% block script_touch %} 
   <script type="text/javascript">
      {% for cat in categories %}
        $('#{{ cat.slug }}').click(function(e){

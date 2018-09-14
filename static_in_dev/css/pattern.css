@@ -1361,7 +1361,7 @@ Main Components
   z-index: 4;
 }
 .cd-main-content.is-fixed .cd-filter form {
-  height: 180vh;
+  height: 100vh;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -1369,6 +1369,9 @@ Main Components
   position: fixed;
 }
 
+.cd-gallery-filter{
+  padding: 0;
+}
 /* -------------------------------- 
 xtab-filter 
 -------------------------------- */
@@ -1527,7 +1530,7 @@ xgallery
 }
 
 .cd-gallery{
-  min-height: 160vh;
+  min-height: 180vh;
 }
 
 .cd-gallery li {

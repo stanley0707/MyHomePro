@@ -23,8 +23,8 @@ from django.views.static import serve
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^admin/search/', include('suit.urls')),
+    url(r'^admin-23414765/', admin.site.urls),
+    url(r'^admin-23414765/search/', include('suit.urls')),
     url(r'^', include('agency_app.urls')),
     url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
